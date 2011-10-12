@@ -18,7 +18,7 @@ public abstract class User extends Model {
 	 * @param username The username (Email address)
 	 * @param password The password
 	 */
-	public User(String username, String password){
+	protected User(String username, String password){
 		this.username = username;
 		this.password = password;
 	}
