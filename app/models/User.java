@@ -10,9 +10,24 @@ import play.db.jpa.*;
  */
 @Entity
 public abstract class User extends Model {
-	private String userName;
+	private String username;
 	private String password;
 	
+	/**
+	 * Creates a new user with the given username and password
+	 * @param username The username (Email address)
+	 * @param password The password
+	 */
+	public User(String username, String password){
+		this.username = username;
+		this.password = password;
+	}
 	
+	/**
+	 * Sends the user their password over email
+	 */
+	public void recoverPassword(){
+		//TODO: Implement this
+	}
 	
 }
