@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -19,7 +20,7 @@ public class Patient extends User {
 	private char sex;
 	
 	@OneToMany(mappedBy="patient", cascade=CascadeType.ALL)
-	private ArrayList<Exam> exams;
+	private List<Exam> exams;
 	
 	//Primary doctor?
 	
