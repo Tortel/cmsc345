@@ -52,6 +52,19 @@ public class Repository {
 			return new ArrayList<Exam>(0);
 	}
 	
+	/**
+	 * Gets all the exams by a given physician
+	 * @param physicianId the physician's ID
+	 * @return a list of all their exams
+	 */
+	public List<Exam> searchByPhysician(Long physicianId){
+		Physician physician = Physician.findById(physicianId);
+		if(physician != null)
+			return physician.getExams();
+		else
+			return new ArrayList<Exam>(0);
+	}
+	
 	
 	
 	/**
@@ -72,6 +85,16 @@ public class Repository {
 	public String decodePassword(String encoded){
 		//TODO: Come up with the decoding process
 		return encoded;
+	}
+	
+	//Might not need this
+	public void makePhysician(){
+		
+	}
+	
+	//Might not need
+	public void makePatient(){
+		
 	}
 	
 }
