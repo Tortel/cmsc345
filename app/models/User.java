@@ -30,4 +30,7 @@ public abstract class User extends Model {
 		//TODO: Implement this
 	}
 	
+	
+	
+	
 }
