@@ -8,9 +8,19 @@ import java.util.*;
 import models.*;
 
 public class PageController extends Controller {
-	//Added comment
+	
+	/**
+	 * Displays the index (Main) page
+	 */
     public static void index() {
         render();
+    }
+    
+    /**
+     * Displays the search page
+     */
+    public static void search(){
+    	render();
     }
 
 }
