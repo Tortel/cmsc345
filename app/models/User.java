@@ -30,7 +30,12 @@ public abstract class User extends Model {
 		//TODO: Implement this
 	}
 	
+	public String getUsername(){
+		return username;
+	}
 	
-	
+	public String getPassword(){
+		return password;
+	}
 	
 }

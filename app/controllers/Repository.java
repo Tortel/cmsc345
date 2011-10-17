@@ -24,9 +24,32 @@ public class Repository {
 	}
 	
 	
+	/**
+	 * Searches for exams within the given dates
+	 * @param first the beginning of the date range
+	 * @param last the end of the test range
+	 * @return a list of all the results
+	 */
 	public List<Exam> searchByDate(Date first, Date last){
+		ArrayList<Exam> exams = new ArrayList<Exam>();
 		
-		return null;
+		//TODO: Search for exams within the range
+		
+		return exams;
+	}
+	
+	/**
+	 * Gets all the exams for a given patient
+	 * @param patientId the patient's ID
+	 * @return a list of all their exams
+	 */
+	//Maybe search by name? Im thinking a dropdown for this
+	public List<Exam> searchByPatient(Long patientId){
+		Patient patient = User.findById(patientId);
+		if(patient != null)
+			return patient.getExams();
+		else
+			return new ArrayList<Exam>(0);
 	}
 	
 	

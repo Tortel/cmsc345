@@ -64,6 +64,15 @@ public class Patient extends User {
 		this.save();
 	}
 	
+	/**
+	 * Returns all the exams this patient has<br>
+	 * been in
+	 * @return a list of all the exams
+	 */
+	public List<Exam> getExams(){
+		return exams;
+	}
+	
 	
 
 }
