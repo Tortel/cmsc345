@@ -33,13 +33,13 @@ Patient(harriet):
     sex:            f
 
 Exam(exam1):
-    patient:        harriet
-    physician:      george
-    physicianComments:      Harriet is awesome!
-    patientComments:       George is awesome!
+    patient:             harriet
+    physician:           george
+    physicianComments:   Harriet is awesome!
+    patientComments:     George is awesome!
 
 Exam(exam2):
-    patient:        bill
-    physician:      bob
-    physicianComments:      Bill sucks!
-    patientComments:       Bob is awesome!
+    patient:            bill
+    physician:          bob
+    physicianComments:  Bill sucks!
+    patientComments:    Bob is awesome!
