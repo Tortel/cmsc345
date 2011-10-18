@@ -3,34 +3,34 @@
 # Test data
 
 Physician(bob):
-    email:          bob@gmail.com
-    password:       secret
-    firstName:      Bob
-    lastName:       Doctor
+    email:              bob@gmail.com
+    password:           secret
+    firstName:          Bob
+    lastName:           Doctor
 
 Physician(george):
-    email:          george@gmail.com
-    password:       secret
-    firstName:      George
-    lastName:       Test
+    email:              george@gmail.com
+    password:           secret
+    firstName:          George
+    lastName:           Test
 
 Patient(bill):
-    email:          bill@gmail.com
-    password:       secret
-    firstName:      Bill
-    lastName:       Sick
-    address:        123 Main Street, Somewhere, MD
-    phoneNumber:    410-000-0000
-    sex:            m
+    email:              bill@gmail.com
+    password:           secret
+    firstName:          Bill
+    lastName:           Sick
+    address:            123 Main Street, Somewhere, MD
+    phoneNumber:        410-000-0000
+    sex:                m
 
 Patient(harriet):
-    email:          harriet@gmail.com
-    password:       secret
-    firstName:      Harriet
-    lastName:       Blarg
-    address:        124 Main Street, Somewhere, MD
-    phoneNumber:    410-000-0001
-    sex:            f
+    email:              harriet@gmail.com
+    password:           secret
+    firstName:          Harriet
+    lastName:           Blarg
+    address:            124 Main Street, Somewhere, MD
+    phoneNumber:        410-000-0001
+    sex:                f
 
 Exam(exam1):
     patient:             harriet
@@ -39,7 +39,7 @@ Exam(exam1):
     patientComments:     George is awesome!
 
 Exam(exam2):
-    patient:            bill
-    physician:          bob
-    physicianComments:  Bill sucks!
-    patientComments:    Bob is awesome!
+    patient:             bill
+    physician:           bob
+    physicianComments:   Bill sucks!
+    patientComments:     Bob is awesome!
