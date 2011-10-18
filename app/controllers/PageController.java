@@ -28,18 +28,30 @@ public class PageController extends Controller {
     	render(physicians, patients);
     }
     
-    /**
-     * Reders the results page
-     * @param exams the exams in the result
-     */
-    public static void results(List<Exam> exams){
-    	render(exams);
+    
+    public static void results(Long physicianId, Long patientId, Date start, Date end){
+    	//Need to check for each search condition: Physician, patient, or date
+    	
+    	//Physician
+    	if(physicianId != null){
+    		render( Repository.searchByPhysician(physicianId) );
+    		return;
+    	}
+    	
+    	//Patient
+    	if(patientId != null){
+    		render( Repository.searchByPatient(patientId) );
+    		return;
+    	}
+    	
+    	//Date
+    	render( Repository.searchByDate(start, end) );
     }
     
     /**
      * Searches for all exams by the given physician
      * @param physicianId the physician's ID
-     */
+     *
     public static void searchByPhysician(@Required Long physicianId){
     	System.out.println("Searching for id "+physicianId);
     	Physician tmp = Physician.findById(physicianId);
@@ -50,10 +62,10 @@ public class PageController extends Controller {
     /**
      * Searches for all exams for the given patient
      * @param patientId the patient's ID
-     */
+     *
     public static void searchByPatient(@Required Long patientId){
     	System.out.println("Searching for id "+patientId);
     	results( Repository.searchByPatient(patientId) );
-    }
+    }*/
 
 }

@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Search' /}
 	
-#{form @PageController.searchByPhysician()}
+#{form @PageController.results()}
     <p>
         <label for="content">Physician: </label><br>
         <select name="physicianId" id="physicianId">
@@ -15,7 +15,7 @@
     </p>
 #{/form}
 <br><br>
-#{form @PageController.searchByPatient()}
+#{form @PageController.results()}
     <p>
         <label for="content">Patient: </label><br>
         <select name="patientId" id="patientId">
