@@ -31,21 +31,24 @@ public class PageController extends Controller {
     
     public static void results(Long physicianId, Long patientId, Date start, Date end){
     	//Need to check for each search condition: Physician, patient, or date
-    	
+    	List<Exam> exams = null;
     	//Physician
     	if(physicianId != null){
-    		render( Repository.searchByPhysician(physicianId) );
+    		exams = Repository.searchByPhysician(physicianId);
+    		render( exams );
     		return;
     	}
     	
     	//Patient
     	if(patientId != null){
-    		render( Repository.searchByPatient(patientId) );
+    		exams = Repository.searchByPatient(patientId);
+    		render( exams );
     		return;
     	}
     	
+    	exams = Repository.searchByDate(start, end);
     	//Date
-    	render( Repository.searchByDate(start, end) );
+    	render( exams );
     }
     
     /**
