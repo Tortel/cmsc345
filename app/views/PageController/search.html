@@ -14,10 +14,10 @@
         <input type="submit" value="Search by Physician" />
     </p>
 #{/form}
-
+<br><br>
 #{form @PageController.searchByPatient()}
     <p>
-        <label for="content">Physician: </label><br>
+        <label for="content">Patient: </label><br>
         <select name="patientId" id="patientId">
         #{list items:patients, as:'patient'}
         	<option value="${patient.id}">${patient.name()}</option>
