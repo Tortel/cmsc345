@@ -1,6 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Results' /}
 
+#{if exams != null}
+	<b>${exams.size()} results</b>
+	
+	#{list items:exams, as:'exam'}
+		<p>Exam ${exam.id}</p>
+	#{/list}
+
+#{/if}
+
 <!-- http://slipsum.com/ -->
 
 <!-- start slipsum code -->
