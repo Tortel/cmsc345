@@ -1,20 +1,34 @@
 #{extends 'main.html' /}
 #{set title:'Search' /}
-
-#{if physicians.size > 0 }
 	
-	#{form @PageController.searchByPhysician()}
-	    <p>
-	        <label for="content">Physician: </label><br>
-	        <select name="physicianId" id="physicianId">
-	        #{list items:physicians, as:'physician'}
-	        	<option value="${physician.id}">${physician.name()}</option>
-	        #{/list}
-	        </select>
-	    </p>
-	    <p>
-	        <input type="submit" value="Search by Physician" />
-	    </p>
-	#{/form}
+#{form @PageController.searchByPhysician()}
+    <p>
+        <label for="content">Physician: </label><br>
+        <select name="physicianId" id="physicianId">
+        #{list items:physicians, as:'physician'}
+        	<option value="${physician.id}">${physician.name()}</option>
+        #{/list}
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="Search by Physician" />
+    </p>
+#{/form}
 
-#{/if}
+#{form @PageController.searchByPatient()}
+    <p>
+        <label for="content">Physician: </label><br>
+        <select name="patientId" id="patientId">
+        #{list items:patients, as:'patient'}
+        	<option value="${patient.id}">${patient.name()}</option>
+        #{/list}
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="Search by Patient" />
+    </p>
+#{/form}
+
+<p>
+Date Search goes here
+</p>

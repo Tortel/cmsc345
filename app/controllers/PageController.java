@@ -29,5 +29,9 @@ public class PageController extends Controller {
     public static void searchByPhysician(Long id){
     	render();
     }
+    
+    public static void searchByPatient(Long id){
+    	render();
+    }
 
 }
