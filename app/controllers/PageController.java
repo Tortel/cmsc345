@@ -41,7 +41,10 @@ public class PageController extends Controller {
      * @param physicianId the physician's ID
      */
     public static void searchByPhysician(@Required Long physicianId){
-    	results( Repository.searchByPhysician(physicianId) );
+    	System.out.println("Searching for id "+physicianId);
+    	Physician tmp = Physician.findById(physicianId);
+    	
+    	results( tmp.getExams() );
     }
     
     /**
@@ -49,6 +52,7 @@ public class PageController extends Controller {
      * @param patientId the patient's ID
      */
     public static void searchByPatient(@Required Long patientId){
+    	System.out.println("Searching for id "+patientId);
     	results( Repository.searchByPatient(patientId) );
     }
 

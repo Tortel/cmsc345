@@ -11,18 +11,10 @@ import play.db.jpa.*;
  * 
  */
 @Entity
-public class Physician extends Model {
+public class Physician extends User {
 	//All the exams they have conducted
 	@OneToMany(mappedBy="physician", cascade=CascadeType.ALL)
 	private List<Exam> exams;
-	
-	
-	//From User
-	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
-	//End from User
 	
 	/**
 	 * Creates a new Physician
@@ -30,14 +22,8 @@ public class Physician extends Model {
 	 * @param password the physician's password
 	 */
 	public Physician(String username, String password, String firstName, String lastName){
-		//super(username, password, firstName, lastName);
+		super(username, password, firstName, lastName);
 		exams = new ArrayList<Exam>();
-		//from User
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		//End from User
 	}
 	
 	/**
@@ -49,26 +35,9 @@ public class Physician extends Model {
 		return exams;
 	}
 	
-	//From User
-	/**
-	 * Sends the user their password over email
-	 */
-	public void recoverPassword(){
-		//TODO: Implement this
+	
+	public void addExam(Exam e){
+		exams.add(e);
+		this.save();
 	}
-	
-	public String getUsername(){
-		return username;
-	}
-	
-	public String getPassword(){
-		return password;
-	}
-	
-	public String getName(){
-		return firstName + " " + lastName;
-	}
-	
-	//End from User
-	
 }

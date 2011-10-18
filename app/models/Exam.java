@@ -34,7 +34,9 @@ public class Exam extends Model {
 	 */
 	public Exam(Patient patient, Physician physician, String physicianComments, String patientComments){
 		this.patient = patient;
+		this.patient.addExam(this);
 		this.physician = physician;
+		this.physician.addExam(this);
 		this.physicianComments = physicianComments;
 		this.patientComments = patientComments;
 	}

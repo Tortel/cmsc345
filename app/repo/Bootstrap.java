@@ -9,7 +9,7 @@ import models.*;
 @OnApplicationStart
 public class Bootstrap extends Job {
  
-    @SuppressWarnings("unused")
+    
 	public void doJob() {
         // Check if the database is empty
         if(User.count() == 0) {
@@ -22,6 +22,7 @@ public class Bootstrap extends Job {
         	
         	Exam exam1 = new Exam(bill, george, "Bill Sucks!", "Bob is awesome!").save();
         	Exam exam2 = new Exam(harriet, bob, "Harriet is awesome!", "Bob is awesome!").save();
+
         	
         }
     }
