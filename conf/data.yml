@@ -32,14 +32,14 @@ Patient(harriet):
     phoneNumber:        410-000-0001
     sex:                f
 
-Exam(exam1):
-    patient:             harriet
-    physician:           george
-    physicianComments:   Harriet is awesome!
-    patientComments:     George is awesome!
-
-Exam(exam2):
-    patient:             bill
-    physician:           bob
-    physicianComments:   Bill sucks!
-    patientComments:     Bob is awesome!
+#Exam(exam1):
+#    patient:             harriet
+#    physician:           george
+#    physicianComments:   Harriet is awesome
+#    patientComments:     George is awesome
+#
+#Exam(exam2):
+#    patient:             bill
+#    physician:           bob
+#    physicianComments:   Bill sucks
+#    patientComments:     Bob is awesome

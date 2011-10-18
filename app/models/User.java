@@ -12,15 +12,19 @@ import play.db.jpa.*;
 public abstract class User extends Model {
 	private String username;
 	private String password;
+	private String firstName;
+	private String lastName;
 	
 	/**
 	 * Creates a new user with the given username and password
 	 * @param username The username (Email address)
 	 * @param password The password
 	 */
-	protected User(String username, String password){
+	protected User(String username, String password, String firstName, String lastName){
 		this.username = username;
 		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 	
 	/**
@@ -36,6 +40,10 @@ public abstract class User extends Model {
 	
 	public String getPassword(){
 		return password;
+	}
+	
+	public String getName(){
+		return firstName + " " + lastName;
 	}
 	
 }

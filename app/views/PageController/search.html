@@ -6,7 +6,7 @@
         <label for="content">Physician: </label><br>
         <select name="physicianId" id="physicianId">
         #{list items:physicians, as:'physician'}
-        	<option value="${physician.id}">${physician.name()}</option>
+        	<option value="${physician.id}">${physician.getName()}</option>
         #{/list}
         </select>
     </p>
@@ -20,7 +20,7 @@
         <label for="content">Patient: </label><br>
         <select name="patientId" id="patientId">
         #{list items:patients, as:'patient'}
-        	<option value="${patient.id}">${patient.name()}</option>
+        	<option value="${patient.id}">${patient.getName()}</option>
         #{/list}
         </select>
     </p>

@@ -32,10 +32,10 @@ public class Patient extends User {
 	 * @param phoneNumber the phone number
 	 * @param sex the sex (M/F/I)
 	 */
-	public Patient(String username, String password, String address,
+	public Patient(String username, String password, String firstName, String lastName, String address,
 			String phoneNumber, char sex) {
 		//Superclass constructor
-		super(username, password);
+		super(username, password, firstName, lastName);
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.sex = sex;
@@ -72,7 +72,5 @@ public class Patient extends User {
 	public List<Exam> getExams(){
 		return exams;
 	}
-	
-	
 
 }
