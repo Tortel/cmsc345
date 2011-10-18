@@ -20,6 +20,13 @@ public class PageController extends Controller {
      * Displays the search page
      */
     public static void search(){
+    	List<Physician> physicians = Physician.findAll();
+    	List<Patient> patients = Patient.findAll();
+    	
+    	render(physicians, patients);
+    }
+    
+    public static void searchByPhysician(Long id){
     	render();
     }
 

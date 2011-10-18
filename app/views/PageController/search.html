@@ -1,4 +1,20 @@
 #{extends 'main.html' /}
 #{set title:'Search' /}
 
-<p>Search Page Filler</p>
+#{if physicians.size > 0 }
+	
+	#{form @PageController.searchByPhysician()}
+	    <p>
+	        <label for="content">Physician: </label><br>
+	        <select name="physicianId" id="physicianId">
+	        #{list items:physicians, as:'physician'}
+	        	<option value="${physician.id}">${physician.name()}</option>
+	        #{/list}
+	        </select>
+	    </p>
+	    <p>
+	        <input type="submit" value="Search by Physician" />
+	    </p>
+	#{/form}
+
+#{/if}
