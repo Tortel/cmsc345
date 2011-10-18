@@ -6,6 +6,7 @@ import play.mvc.*;
 import java.util.*;
 
 import models.*;
+import repo.Repository;
 
 public class PageController extends Controller {
 	
@@ -26,12 +27,28 @@ public class PageController extends Controller {
     	render(physicians, patients);
     }
     
-    public static void searchByPhysician(Long id){
-    	render();
+    /**
+     * Reders the results page
+     * @param exams the exams in the result
+     */
+    public static void results(List<Exam> exams){
+    	render(exams);
     }
     
+    /**
+     * Searches for all exams by the given physician
+     * @param id the physician's ID
+     */
+    public static void searchByPhysician(Long id){
+    	results( Repository.searchByPhysician(id) );
+    }
+    
+    /**
+     * Searches for all exams for the given patient
+     * @param id the patient's ID
+     */
     public static void searchByPatient(Long id){
-    	render();
+    	results( Repository.searchByPatient(id) );
     }
 
 }

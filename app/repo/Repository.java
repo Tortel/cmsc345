@@ -15,7 +15,7 @@ public class Repository {
 	 * @param password the password
 	 * @return true if the username/password are valid
 	 */
-	public boolean login(String username, String password){
+	public static boolean login(String username, String password){
 		User tmp = User.find("byUsernameAndPassword", username, encodePassword(password)).first();
 		if(tmp != null)
 			return true;
@@ -30,7 +30,7 @@ public class Repository {
 	 * @param last the end of the test range
 	 * @return a list of all the results
 	 */
-	public List<Exam> searchByDate(Date first, Date last){
+	public static List<Exam> searchByDate(Date first, Date last){
 		ArrayList<Exam> exams = new ArrayList<Exam>();
 		
 		//TODO: Search for exams within the range
@@ -44,7 +44,7 @@ public class Repository {
 	 * @return a list of all their exams
 	 */
 	//Maybe search by name? Im thinking a dropdown for this
-	public List<Exam> searchByPatient(Long patientId){
+	public static List<Exam> searchByPatient(Long patientId){
 		Patient patient = User.findById(patientId);
 		if(patient != null)
 			return patient.getExams();
@@ -57,7 +57,7 @@ public class Repository {
 	 * @param physicianId the physician's ID
 	 * @return a list of all their exams
 	 */
-	public List<Exam> searchByPhysician(Long physicianId){
+	public static List<Exam> searchByPhysician(Long physicianId){
 		Physician physician = Physician.findById(physicianId);
 		if(physician != null)
 			return physician.getExams();
@@ -72,7 +72,7 @@ public class Repository {
 	 * @param plaintext the string to encode
 	 * @return the encoded string
 	 */
-	public String encodePassword(String plaintext){
+	public static String encodePassword(String plaintext){
 		//TODO: Come up with some encoding process
 		return plaintext;
 	}
@@ -82,18 +82,18 @@ public class Repository {
 	 * @param encoded the encoded string
 	 * @return the decoded string
 	 */
-	public String decodePassword(String encoded){
+	public static String decodePassword(String encoded){
 		//TODO: Come up with the decoding process
 		return encoded;
 	}
 	
 	//Might not need this
-	public void makePhysician(){
+	public static void makePhysician(){
 		
 	}
 	
 	//Might not need
-	public void makePatient(){
+	public static void makePatient(){
 		
 	}
 	
