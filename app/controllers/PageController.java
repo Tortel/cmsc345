@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import play.data.validation.*;
 import play.mvc.*;
 
 import java.util.*;
@@ -37,18 +38,18 @@ public class PageController extends Controller {
     
     /**
      * Searches for all exams by the given physician
-     * @param id the physician's ID
+     * @param physicianId the physician's ID
      */
-    public static void searchByPhysician(Long id){
-    	results( Repository.searchByPhysician(id) );
+    public static void searchByPhysician(@Required Long physicianId){
+    	results( Repository.searchByPhysician(physicianId) );
     }
     
     /**
      * Searches for all exams for the given patient
-     * @param id the patient's ID
+     * @param patientId the patient's ID
      */
-    public static void searchByPatient(Long id){
-    	results( Repository.searchByPatient(id) );
+    public static void searchByPatient(@Required Long patientId){
+    	results( Repository.searchByPatient(patientId) );
     }
 
 }
