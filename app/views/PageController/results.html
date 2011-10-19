@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Results' /}
 
-#{if exams != null}
+#{if exams != null && exams.size() > 0}
 	#{if exams.size() == 1}
 	   <b>1 result</b>
 	#{/if}
