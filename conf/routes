@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                                       PageController.index
+GET		/exam/{id}								PageController.exam
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
