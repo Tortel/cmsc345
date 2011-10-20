@@ -10,7 +10,7 @@
 	#{/else}
 	
 	#{list items:exams, as:'exam'}
-		<p>Exam ${exam.id}</p>
+		<a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a>
 	#{/list}
 
 #{/if}
