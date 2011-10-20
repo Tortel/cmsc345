@@ -3,14 +3,14 @@
 
 #{if exams != null && exams.size() > 0}
 	#{if exams.size() == 1}
-	   <b>1 result</b>
+	   <b>1 result</b><br><br>
 	#{/if}
 	#{else}
-	   <b>${exams.size()} results</b>
+	   <b>${exams.size()} results</b><br><br>
 	#{/else}
 	
 	#{list items:exams, as:'exam'}
-		<a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a>
+		<a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a><br>
 	#{/list}
 
 #{/if}
