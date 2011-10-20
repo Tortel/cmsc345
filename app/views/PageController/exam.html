@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Exam ${exam.id}' /}
+
+<h2>Exam ${exam.id}</h2>
+
+<p>Date: ${exam.getDate().format('dd MMM yy')}</p>
+
+<p>Physician: <a href="#">${exam.physician.getName()}</a><br>
+Patient: <a href="#">${exam.patient.getName()}</a></p>
+
+<br>
+
+<p>Physician Comments:<br>
+<pre>${exam.getPhysicianComments()}</pre>
+</p>
+
+<br>
+
+<p>Patient Comments:<br>
+<pre>${exam.getPatientComments()}</pre>
+</p>
+

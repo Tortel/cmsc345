@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 import play.db.jpa.*;
@@ -15,6 +17,8 @@ public class Exam extends Model {
 	
 	@ManyToOne
 	private Physician physician;
+	
+	private Date date;
 	
 	//Lob makes these a large object in the database
 	@Lob
@@ -37,8 +41,10 @@ public class Exam extends Model {
 		this.patient.addExam(this);
 		this.physician = physician;
 		this.physician.addExam(this);
+		//TODO:Strip HTML from comments
 		this.physicianComments = physicianComments;
 		this.patientComments = patientComments;
+		this.date = new Date();
 	}
 	
 	
@@ -56,5 +62,9 @@ public class Exam extends Model {
 	
 	public String getPatientComments(){
 		return patientComments;
+	}
+	
+	public Date getDate(){
+		return date;
 	}
 }

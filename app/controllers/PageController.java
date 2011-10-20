@@ -51,24 +51,10 @@ public class PageController extends Controller {
     	render( exams );
     }
     
-    /**
-     * Searches for all exams by the given physician
-     * @param physicianId the physician's ID
-     *
-    public static void searchByPhysician(@Required Long physicianId){
-    	System.out.println("Searching for id "+physicianId);
-    	Physician tmp = Physician.findById(physicianId);
-    	
-    	results( tmp.getExams() );
-    }
     
-    /**
-     * Searches for all exams for the given patient
-     * @param patientId the patient's ID
-     *
-    public static void searchByPatient(@Required Long patientId){
-    	System.out.println("Searching for id "+patientId);
-    	results( Repository.searchByPatient(patientId) );
-    }*/
+    public static void exam(Long examId){
+    	Exam exam = Exam.findById(examId);
+    	render(exam);
+    }
 
 }
