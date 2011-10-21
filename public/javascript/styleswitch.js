@@ -2,8 +2,8 @@
 //Author: Dynamic Drive: http://www.dynamicdrive.com
 //Usage terms: http://www.dynamicdrive.com/notice.htm
 
-var manual_or_random="manual" //"manual" or "random"
-var randomsetting="3 days" //"eachtime", "sessiononly", or "x days (replace x with desired integer)". Only applicable if mode is random.
+var manual_or_random="random" //"manual" or "random"
+var randomsetting="sessiononly" //"eachtime", "sessiononly", or "x days (replace x with desired integer)". Only applicable if mode is random.
 
 //////No need to edit beyond here//////////////
 
