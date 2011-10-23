@@ -1,0 +1,8 @@
+#{extends 'main.html' /}
+#{set title:'Patient Information' /}
+
+<h2>${patient.getName()}</h2>
+
+
+<br>
+<a href="@{PageController.results(null, patient.id, null, null)}">Exams for ${patinet.getName()}</a>

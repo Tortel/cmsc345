@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       PageController.index
 GET		/exam/{examId}							PageController.exam
+GET		/patinent/{id}							PageController.patient
 GET		/search.html							PageController.search
 
 # Ignore favicon requests
