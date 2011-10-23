@@ -5,8 +5,8 @@
 
 <p>Date: ${exam.getDate().format('dd MMM yy')}</p>
 
-<p>Physician: <a href="#">${exam.physician.getName()}</a><br>
-Patient: <a href="@{PageController.patient(exam.patinet.id)}">${exam.patient.getName()}</a></p>
+<p>Physician: <a href="@{PageController.physician(exam.physician.id)}">${exam.physician.getName()}</a><br>
+Patient: <a href="@{PageController.patient(exam.patient.id)}">${exam.patient.getName()}</a></p>
 
 <br>
 
