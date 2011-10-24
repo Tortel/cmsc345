@@ -2,12 +2,7 @@
 #{set title:'Results' /}
 
 #{if exams != null && exams.size() > 0}
-	#{if exams.size() == 1}
-	   <b>1 result</b><br><br>
-	#{/if}
-	#{else}
-	   <b>${exams.size()} results</b><br><br>
-	#{/else}
+	#{display title:'Search Results' subtitle:exams.size()+' results' /}
 	
 	#{list items:exams, as:'exam'}
 		<a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a><br>
@@ -16,6 +11,6 @@
 #{/if}
 #{else}
 
-<b>No results</b>
+#{display title:'Search Results' subtitle:'No results' /}
 
 #{/else}
