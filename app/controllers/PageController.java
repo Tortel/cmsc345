@@ -9,6 +9,7 @@ import java.util.*;
 import models.*;
 import repo.Repository;
 
+@With(Secure.class)
 public class PageController extends Controller {
 	
 	/**
