@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       PageController.index
+GET     /                                       Dummy.index
 GET		/exam/{examId}							PageController.exam
 GET		/patinent/{id}							PageController.patient
 GET		/physician/{id}							PageController.physician

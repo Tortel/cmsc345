@@ -14,7 +14,7 @@ public class PageController extends Controller {
 	/**
 	 * Displays the index (Main) page
 	 */
-    public static void index() {
+    public static void welcome() {
         render();
     }
     
