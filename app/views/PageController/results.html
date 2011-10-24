@@ -3,17 +3,22 @@
 
 <h3>Search Results</h3>
 #{if exams != null && exams.size() > 0}
-    <ul class="post_info">
 	#{if exams.size() == 1}
-	   <li class="date">1 result</li>
+	   <p><b>1 result</b></p>
 	#{/if}
 	#{else}
-	   <li class="date">${exams.size()} results</li>
+	   <p><b>${exams.size()} results</b></p>
 	#{/else}
-    </ul>	
 
 	#{list items:exams, as:'exam'}
-		<p><a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a></p>
+		<h4><a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a></h4>
+		<p>
+		Date: ${exam.getDate().format('dd MMM yy')}<br>
+		Patient: ${exam.getPatient().getName()}<br>
+		Physician: ${exam.getPhysician().getName()}
+		 <!-- Date, patient name, physician name -->
+		</p>
+		
 	#{/list}
 
 #{/if}

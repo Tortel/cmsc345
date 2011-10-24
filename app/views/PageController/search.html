@@ -3,7 +3,7 @@
 	
 #{form @PageController.results()}
     <p>
-        <label for="content">Physician: </label><br>
+        <h3>Search By Physician</h3>
         <select name="physicianId" id="physicianId">
         #{list items:physicians, as:'physician'}
         	<option value="${physician.id}">${physician.getName()}</option>
@@ -11,13 +11,13 @@
         </select>
     </p>
     <p>
-        <input type="submit" value="Search by Physician" />
+        <input type="submit" value="Search" />
     </p>
 #{/form}
 <br><br>
 #{form @PageController.results()}
     <p>
-        <label for="content">Patient: </label><br>
+        <h3>Patient</h3>
         <select name="patientId" id="patientId">
         #{list items:patients, as:'patient'}
         	<option value="${patient.id}">${patient.getName()}</option>
@@ -25,10 +25,11 @@
         </select>
     </p>
     <p>
-        <input type="submit" value="Search by Patient" />
+        <input type="submit" value="Search" />
     </p>
 #{/form}
 
-<p>
-Date Search goes here
-</p>
+<br><br>
+
+<h3>Search by Date</h3>
+<p>Here later</p>
