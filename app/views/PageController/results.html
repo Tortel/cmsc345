@@ -1,16 +1,24 @@
 #{extends 'main.html' /}
 #{set title:'Results' /}
 
+<h3>Search Results</h3>
 #{if exams != null && exams.size() > 0}
-	#{display title:'Search Results' subtitle:exams.size()+' results' /}
-	
+    <ul class="post_info">
+	#{if exams.size() == 1}
+	   <li class="date">1 result</li>
+	#{/if}
+	#{else}
+	   <li class="date">${exams.size()} results</li>
+	#{/else}
+    </ul>	
+
 	#{list items:exams, as:'exam'}
-		<a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a><br>
+		<p><a href="@{PageController.exam(exam.id)}">Exam ${exam.id}</a></p>
 	#{/list}
 
 #{/if}
 #{else}
 
-#{display title:'Search Results' subtitle:'No results' /}
+<b>No results</b>
 
 #{/else}
