@@ -296,7 +296,7 @@ padding-top: 1.0em;
 
 input.button
 {
-background: #2798D2 url('public/images_green/n3.gif') repeat-x;
+background: #2798D2 url('/public/images_green/n3.gif') repeat-x;
 color: #fff;
 border: solid 1px #468BAE;
 font-weight: bold;
