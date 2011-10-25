@@ -23,10 +23,10 @@ public class Dummy extends Controller {
 			@Required String sex, String code){
 		
     	if (validation.hasErrors()) {
-            render("createAccount.html");
+            render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
 		//TODO: Create the user, then log them in automagically
-		
+		index();
 	}
 	
 }
