@@ -36,6 +36,12 @@ public class PageController extends Controller {
     
     
     public static void results(Long physicianId, Long patientId, Date start, Date end){
+    	if(!Security.check("physician")){
+    		physicianId = null;
+    		start = null;
+    		end = null;
+    		patientId = Security.getUserId();
+    	}
     	//Need to check for each search condition: Physician, patient, or date
     	List<Exam> exams = null;
     	//Physician
