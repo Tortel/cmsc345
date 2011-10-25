@@ -23,6 +23,10 @@ public class PageController extends Controller {
      * Displays the search page
      */
     public static void search(){
+    	if(!Security.check("physician")){
+    		
+    	}
+    	
     	List<Physician> physicians = Physician.findAll();
     	List<Patient> patients = Patient.findAll();
     	

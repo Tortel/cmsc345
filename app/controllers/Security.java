@@ -58,4 +58,12 @@ public class Security extends Secure.Security {
 		return false;
 	}
 	
+	public static long getUserId(){
+		User user = User.find("byUsername", connected() ).<User>first();
+		if(user != null){
+			return user.id;
+		}
+		return 0;
+	}
+	
 }

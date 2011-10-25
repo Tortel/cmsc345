@@ -10,4 +10,10 @@ public class Dummy extends Controller {
 		else
 			PageController.welcome();
 	}
+	
+	public static void createAccount(){
+		render();
+	}
+	
+	
 }
