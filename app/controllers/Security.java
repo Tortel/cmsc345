@@ -44,9 +44,14 @@ public class Security extends Secure.Security {
 	 * @return true if user is the given role, false otherwise
 	 */
 	public static boolean check(String profile){
+		//Check if they are even connected
+		if(!isConnected())
+			return false;
+		
+		//Check if user is a physician
 		if("physician".equals(profile)){
 			User user = User.find("byUsername", connected() ).<User>first();
-			if(user.getClass() == Physician.class)
+			if(user != null && user.getClass() == Physician.class)
 				return true;
 		}
 		
