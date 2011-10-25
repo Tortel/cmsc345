@@ -5,14 +5,23 @@
 
 <p>Date: ${exam.getDate().format('dd MMM yy')}</p>
 
-<p>Physician: <a href="@{PageController.physician(exam.physician.id)}">${exam.physician.getName()}</a><br>
-Patient: <a href="@{PageController.patient(exam.patient.id)}">${exam.patient.getName()}</a></p>
+#{if session.username && controllers.Secure.Security.invoke("check", "physician")}
+	<p>Physician: <a href="@{PageController.physician(exam.physician.id)}">${exam.physician.getName()}</a><br>
+	Patient: <a href="@{PageController.patient(exam.patient.id)}">${exam.patient.getName()}</a></p>
+#{/if}
+#{else}
+	<p>Physician: ${exam.physician.getName()}<br>
+	Patient: ${exam.patient.getName()}</p>
+#{else}
+
 
 <br>
 
-<p>Physician Comments:<br>
-<pre>${exam.getPhysicianComments()}</pre>
-</p>
+#{secure.check "physician"}
+	<p>Physician Comments:<br>
+	<pre>${exam.getPhysicianComments()}</pre>
+	</p>
+#{/secure.check}
 
 <br>
 
