@@ -2,6 +2,8 @@ package controllers;
 
 import play.mvc.Controller;
 
+import play.data.validation.Required;
+
 public class Dummy extends Controller {
 
 	public static void index(){
@@ -15,7 +17,14 @@ public class Dummy extends Controller {
 		render();
 	}
 	
-	public static void newAccount(){
+	public static void newAccount(@Required String email, @Required String password,
+			@Required String firstName, @Required String lastName,
+			@Required String address, @Required String phoneNumber,
+			@Required char sex, String code){
+		
+    	if (validation.hasErrors()) {
+            render("createAccont.html");
+        }
 		//TODO: Create the user, then log them in automagically
 		
 	}

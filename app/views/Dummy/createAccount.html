@@ -2,7 +2,11 @@
 #{set title:'Create Account' /}
 
 <h3>Create Account</h3>
-
+#{ifErrors}
+	<br>
+	<b>Please fill out all required fields</b>
+	<br>
+#{/ifErrors}
 #{form @Dummy.newAccount()}
 	<table>
 		<tr><td>Email Address:	</td><td><input type="text" size="25" name="email" id="email" />			</td></tr>
@@ -18,8 +22,8 @@
 				<option value="i">Intersex</option>
 			</select>
 					</td></tr>
-		<tr><td>Physician Only Code:</td><td><input type="text" size="25" name="code" id="code" /></td></tr>
+		<tr><td>Physician Code (Optional):</td><td><input type="text" size="25" name="code" id="code" /></td></tr>
+	
+	<tr><td colspan="2" align="center">	<input type="submit" value="Create Account" />	</td></tr>
 	</table>
-	<br>
-	<input type="submit" value="Create" />
 #{/form}
