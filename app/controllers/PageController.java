@@ -24,7 +24,8 @@ public class PageController extends Controller {
      */
     public static void search(){
     	if(!Security.check("physician")){
-    		
+    		//Direct the user to their own exams
+    		results(null, Security.getUserId(), null, null);
     	}
     	
     	List<Physician> physicians = Physician.findAll();
