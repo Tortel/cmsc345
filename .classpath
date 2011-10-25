@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="views/**" kind="src" path="app"/>
+	<classpathentry kind="src" path="modules/secure/app"/>
 	<classpathentry kind="src" path="test"/>
-	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/opt/play/framework/play-1.2.3.jar" sourcepath="/opt/play/framework/src" />
+	<classpathentry kind="lib" path="/opt/play/framework/play-1.2.3.jar" sourcepath="/opt/play/framework/src"/>
 	<classpathentry kind="lib" path="/opt/play/framework/lib/gson-1.7.1.jar"/>
 	<classpathentry kind="lib" path="/opt/play/framework/lib/oval-1.50.jar"/>
 	<classpathentry kind="lib" path="/opt/play/framework/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar">
@@ -79,6 +79,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/opt/play/framework/lib/snakeyaml-1.7.jar"/>
-	
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
