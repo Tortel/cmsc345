@@ -41,7 +41,7 @@
 		<div id="menu">
 			<ul>
 				#{if !controllers.Security.isConnected() }
-				<li><a href="@{PageController.welcome()}">Login</a></li> <!-- class="active -->
+					<li><a href="@{PageController.welcome()}">Login</a></li> <!-- class="active -->
 				#{/if}
 				#{else}
 					<li><a href="@{PageController.welcome()}">Home</a></li> <!-- class="active -->
