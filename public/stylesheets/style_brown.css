@@ -117,7 +117,7 @@ line-height: 1.8em;
 {
 width:100%;
 height:122px;
-background: #440000 url('/public/images_brown/n1.gif') repeat-x;
+background: #440000 url('http://173.64.122.187:9000/public/images_brown/n1.gif') repeat-x;
 }
 
 #header_inner
@@ -175,7 +175,7 @@ float: left;
 margin-left: 0.5em;
 display: block;
 padding: 1.1em 1.4em 1.0em 1.4em;
-background: #fff url('/public/images_brown/n4.gif') repeat-x;
+background: #fff url('http://173.64.122.187:9000/public/images_brown/n4.gif') repeat-x;
 border: solid 1px #fff;
 color: #616161;
 font-weight: bold;
@@ -186,7 +186,7 @@ text-decoration: none;
 
 #menu li a.active
 {
-background: #CC6C0C url('/public/images_brown/n3.gif') repeat-x;
+background: #CC6C0C url('http://173.64.122.187:9000/public/images_brown/n3.gif') repeat-x;
 color: #fff;
 border: solid 1px #AA7036;
 }
@@ -195,7 +195,7 @@ border: solid 1px #AA7036;
 
 #main
 {
-background: #fff url('/public/images_brown/n2.gif') 0px 1px repeat-x;
+background: #fff url('http://173.64.122.187:9000/public/images_brown/n2.gif') 0px 1px repeat-x;
 }
 
 #main_inner p
@@ -268,12 +268,12 @@ padding-left: 18px;
 
 #main_inner .post ul.post_info li.date
 {
-background-image: url('/public/images_brown/n5.gif');
+background-image: url('http://173.64.122.187:9000/public/images_brown/n5.gif');
 }
 
 #main_inner .post ul.post_info li.comments
 {
-background-image: url('/public/images_brown/n6.gif');
+background-image: url('http://173.64.122.187:9000/public/images_brown/n6.gif');
 margin-left: 1.1em;
 }
 
@@ -296,7 +296,7 @@ padding-top: 1.0em;
 
 input.button
 {
-background: #CC6C0C url('/public/images_brown/n3.gif') repeat-x;
+background: #CC6C0C url('http://173.64.122.187:9000/public/images_brown/n3.gif') repeat-x;
 color: #fff;
 border: solid 1px #AA7036;
 font-weight: bold;
