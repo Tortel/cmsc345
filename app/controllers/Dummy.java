@@ -23,7 +23,7 @@ public class Dummy extends Controller {
 			@Required String sex, String code){
 		
     	if (validation.hasErrors()) {
-            createAccount();
+            render("createAccount.html");
         }
 		//TODO: Create the user, then log them in automagically
 		
