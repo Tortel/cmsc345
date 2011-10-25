@@ -10,6 +10,7 @@ GET		/patinent/{id}							PageController.patient
 GET		/physician/{id}							PageController.physician
 GET		/search.html							PageController.search
 GET		/results.html							PageController.results
+GET		/createAccount.html						Dummy.createAccount
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
