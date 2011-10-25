@@ -40,12 +40,17 @@
 		
 		<div id="menu">
 			<ul>
-				<li><a href="@{PageController.welcome()}">Home</a></li> <!-- class="active -->
-				<li><a href="@{PageController.search()}">View Exams</a></li>
-				#{secure.check 'physician'}
-				<li><a href="#">Create Exam</a></li>
-				#{/secure.check}
-				<li><a href="@{Secure.logout()}">Logout</a></li>
+				#{if !secure.isConnected() }
+				<li><a href="@{PageController.welcome()}">Login</a></li> <!-- class="active -->
+				#{/if}
+				#{else}
+					<li><a href="@{PageController.welcome()}">Home</a></li> <!-- class="active -->
+					<li><a href="@{PageController.search()}">View Exams</a></li>
+					#{secure.check 'physician'}
+					<li><a href="#">Create Exam</a></li>
+					#{/secure.check}
+					<li><a href="@{Secure.logout()}">Logout</a></li>
+				#{/else}
 			</ul>
 		</div>
 		
