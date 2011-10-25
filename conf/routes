@@ -9,6 +9,7 @@ GET		/exam/{examId}							PageController.exam
 GET		/patinent/{id}							PageController.patient
 GET		/physician/{id}							PageController.physician
 GET		/search.html							PageController.search
+GET		/results.html							PageController.results
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
