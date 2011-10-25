@@ -15,5 +15,9 @@ public class Dummy extends Controller {
 		render();
 	}
 	
+	public static void newAccount(){
+		//TODO: Create the user, then log them in automagically
+		
+	}
 	
 }
