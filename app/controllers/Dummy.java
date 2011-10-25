@@ -20,7 +20,7 @@ public class Dummy extends Controller {
 	public static void newAccount(@Required String email, @Required String password,
 			@Required String firstName, @Required String lastName,
 			@Required String address, @Required String phoneNumber,
-			@Required char sex, String code){
+			@Required String sex, String code){
 		
     	if (validation.hasErrors()) {
             createAccount();
