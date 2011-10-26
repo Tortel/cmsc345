@@ -34,7 +34,13 @@ public class PageController extends Controller {
     	render(physicians, patients);
     }
     
-    
+    /**
+     * Preforms the search, and displays the search results
+     * @param physicianId the ID of the physician, if searching by physician
+     * @param patientId the ID of patient, if searching by the patient
+     * @param start the start date, if searching by date range
+     * @param end the end date, if searching by date range
+     */
     public static void results(Long physicianId, Long patientId, Date start, Date end){
     	if(!Security.check("physician")){
     		physicianId = null;
@@ -63,7 +69,10 @@ public class PageController extends Controller {
     	render( exams );
     }
     
-    
+    /**
+     * View 
+     * @param examId
+     */
     public static void exam(Long examId){
     	Exam exam = Exam.findById(examId);
     	render(exam);

@@ -18,8 +18,6 @@ public class Security extends Secure.Security {
 	 */
 	static boolean authenticate(String username, String password) {
 		//This makes it return true, until its set up a little better
-		if(username != null)
-			return true;
 		
 		return Repository.login(username, password);	
 	}
@@ -58,6 +56,10 @@ public class Security extends Secure.Security {
 		return false;
 	}
 	
+	/**
+	 * Get the user ID of the logged in user
+	 * @return the user ID
+	 */
 	public static long getUserId(){
 		User user = User.find("byUsername", connected() ).<User>first();
 		if(user != null){
