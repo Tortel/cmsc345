@@ -83,9 +83,12 @@ public class PageController extends Controller {
     
     @Check("physician")
     public static void createExamForm(){
-    	render();
+    	List<Patient> patients = Patient.findAll();
+    	
+    	render(patients);
     }
     
+    @Check("physician")
     public static void createExam(){
     	
     	createExamForm();
