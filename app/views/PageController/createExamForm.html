@@ -1,0 +1,48 @@
+#{extends 'main.html' /}
+#{set title:'Create Exam' /}
+
+<h3>Create Exam</h3>
+#{ifErrors}
+	<br>
+	<b>Please fix the following errors:</b>
+	
+ 	#{errors}
+       <li>${error}</li>
+   	#{/errors}
+   	
+	<br>
+	<br>
+#{/ifErrors}
+#{form @PageController.createExam(), enctype:'multipart/form-data'}
+	<table>
+		<tr>
+		<td>Patient:</td>
+			<td>
+				<select name="patientId" id="patientId">
+	        	#{list items:patients, as:'patient'}
+	        		<option value="${patient.id}">${patient.getName()}</option>
+	        	#{/list}
+	        	</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Ultrasound File:</td>
+			<td>
+				<input type="file" id="video" name="video" />
+			</td>
+		</tr>
+		<tr>
+			<td>Physician Comments:</td>
+			<td>
+				<textarea rows="3" cols="20" name="physicianComments" id="physicianComments"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>Patient Comments:</td>
+			<td>
+				<textarea rows="3" cols="20" name="patientComments" id="patientComments"></textarea>
+			</td>
+		</tr>
+	<tr><td colspan="2" align="center">	<input type="submit" value="Create Account" />	</td></tr>
+	</table>
+#{/form}

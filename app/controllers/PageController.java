@@ -69,16 +69,27 @@ public class PageController extends Controller {
     	render(exam);
     }
     
-    
+    @Check("physician")
     public static void patient(Long id){
     	Patient patient = Patient.findById(id);
     	render(patient);
     }
     
-    
+    @Check("physician")
     public static void physician(Long id){
     	Physician physician = Physician.findById(id);
     	render(physician);
     }
+    
+    @Check("physician")
+    public static void createExamForm(){
+    	render();
+    }
+    
+    public static void createExam(){
+    	
+    	createExamForm();
+    }
+    
 
 }
