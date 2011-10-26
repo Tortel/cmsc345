@@ -19,15 +19,19 @@ public class Dummy extends Controller {
 		render();
 	}
 	
-	public static void newAccount(@Required String email, @Required String password,
-			@Required String firstName, @Required String lastName,
-			@Required String address, @Required String phoneNumber,
-			@Required String sex, String code){
+	public static void newAccount(@Required(message = "Please enter a valid email address") String email,
+			@Required(message = "Please enter a password") String password,
+			@Required(message = "Please enter your first name") String firstName,
+			@Required(message = "Please enter your last name") String lastName,
+			@Required(message = "Please enter your address")  String address,
+			@Required(message = "Please enter your phone number") String phoneNumber,
+			@Required String sex,
+			String code){
 		
     	//Check that the email isnt registered already
     	if(User.find("byUsername", email).fetch().size() > 0){
     		//Email already registered.
-    		validation.addError("email", "Email already registered", "");
+    		validation.addError("email", "Email already registered", "email");
     		
     	}
     	
