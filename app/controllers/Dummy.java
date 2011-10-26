@@ -1,5 +1,7 @@
 package controllers;
 
+import models.*;
+
 import play.mvc.Controller;
 
 import play.data.validation.Required;
@@ -25,8 +27,17 @@ public class Dummy extends Controller {
     	if (validation.hasErrors()) {
             render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
-		//TODO: Create the user, then log them in automagically
-		index();
+    	
+    	//If the code is correct, create user as physician
+    	if(code.equals("physician")){
+    		new Physician(email, password, firstName, lastName).save();
+    	} else {
+    		//Else, create them as a patient
+    		new Patient(email, password, firstName, lastName, address, phoneNumber, sex.charAt(0)).save();
+    	}
+    	
+    	//Authenticate them automatically
+    	Security.authenticate(email, password);
 	}
 	
 }
