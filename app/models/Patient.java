@@ -38,7 +38,7 @@ public class Patient extends User {
 		super(username, password, firstName, lastName);
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		this.sex = sex;
+		this.sex = Character.toUpperCase(sex);
 		exams = new ArrayList<Exam>();
 	}
 
