@@ -24,6 +24,13 @@ public class Dummy extends Controller {
 			@Required String address, @Required String phoneNumber,
 			@Required String sex, String code){
 		
+    	//Check that the email isnt registered already
+    	if(User.find("byUsername", email).fetch().size() > 0){
+    		//Email already registered.
+    		validation.addError("email", "Email already registered", "");
+    		
+    	}
+    	
     	if (validation.hasErrors()) {
             render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }

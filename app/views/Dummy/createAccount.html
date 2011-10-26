@@ -4,7 +4,12 @@
 <h3>Create Account</h3>
 #{ifErrors}
 	<br>
-	<b>Please fill out all required fields</b>
+	<b>Please fix the following errors:</b>
+	
+ 	#{errors}
+       <li>${error}</li>
+   	#{/errors}
+   	
 	<br>
 	<br>
 #{/ifErrors}
