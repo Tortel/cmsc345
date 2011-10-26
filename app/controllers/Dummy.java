@@ -38,6 +38,7 @@ public class Dummy extends Controller {
     	
     	//Authenticate them automatically
     	Security.authenticate(email, password);
+    	render("PageController/welcome.html");
 	}
 	
 }
