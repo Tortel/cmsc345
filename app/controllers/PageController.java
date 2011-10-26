@@ -13,7 +13,7 @@ import repo.Repository;
 public class PageController extends Controller {
 	
 	/**
-	 * Displays the index (Main) page
+	 * Displays the welcome page
 	 */
     public static void welcome() {
         render();
@@ -70,7 +70,7 @@ public class PageController extends Controller {
     }
     
     /**
-     * View 
+     * View an exam
      * @param examId
      */
     public static void exam(Long examId){
@@ -78,22 +78,35 @@ public class PageController extends Controller {
     	render(exam);
     }
     
+    /**
+     * View a patient's details.<br>
+     * Restricted to physicians only
+     * @param id the patient's id
+     */
     @Check("physician")
     public static void patient(Long id){
     	Patient patient = Patient.findById(id);
     	render(patient);
     }
     
+    /**
+     * View a physician's details.<br>
+     * Restricted to physicians only
+     * @param id the physician's id
+     */
     @Check("physician")
     public static void physician(Long id){
     	Physician physician = Physician.findById(id);
     	render(physician);
     }
     
+    /**
+     * Displays the form to create a new ultrasound exam.<br>
+     * Restricted to physicians
+     */
     @Check("physician")
     public static void createExamForm(){
     	List<Patient> patients = Patient.findAll();
-    	
     	render(patients);
     }
     

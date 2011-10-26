@@ -35,7 +35,10 @@ public class Physician extends User {
 		return exams;
 	}
 	
-	
+	/**
+	 * Add an exam to the physician's records
+	 * @param e the exam
+	 */
 	public void addExam(Exam e){
 		exams.add(e);
 		this.save();

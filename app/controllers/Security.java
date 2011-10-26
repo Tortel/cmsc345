@@ -14,11 +14,9 @@ public class Security extends Secure.Security {
 	 * Method to authenticate users
 	 * @param username the username
 	 * @param password the password
-	 * @return
+	 * @return true if able to login
 	 */
 	static boolean authenticate(String username, String password) {
-		//This makes it return true, until its set up a little better
-		
 		return Repository.login(username, password);	
 	}
 	

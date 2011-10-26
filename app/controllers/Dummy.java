@@ -6,8 +6,14 @@ import play.mvc.Controller;
 
 import play.data.validation.Required;
 
+/**
+ * Non-secured controller class.
+ */
 public class Dummy extends Controller {
-
+	
+	/**
+	 * Displays the main welcome page.
+	 */
 	public static void index(){
 		if(!Security.isConnected())
 			render();
@@ -15,10 +21,24 @@ public class Dummy extends Controller {
 			PageController.welcome();
 	}
 	
+	/**
+	 * Displays the form to create a new account
+	 */
 	public static void createAccount(){
 		render();
 	}
 	
+	/**
+	 * Creates a new user
+	 * @param email
+	 * @param password
+	 * @param firstName
+	 * @param lastName
+	 * @param address
+	 * @param phoneNumber
+	 * @param sex
+	 * @param code code to create the account as a physician
+	 */
 	public static void newAccount(@Required(message = "Please enter a valid email address") String email,
 			@Required(message = "Please enter a password") String password,
 			@Required(message = "Please enter your first name") String firstName,

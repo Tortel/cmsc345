@@ -42,6 +42,10 @@ public abstract class User extends Model {
 		return password;
 	}
 	
+	/**
+	 * Get the user's full (first and last) name
+	 * @return 
+	 */
 	public String getName(){
 		return firstName + " " + lastName;
 	}
