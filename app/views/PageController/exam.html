@@ -14,10 +14,9 @@
 	Patient: ${exam.patient.getName()}</p>
 #{/else}
 
-<br>
-
 <a href="@{PageController.downloadVideo(exam.id)}">Download Ultrasound file</a>
 
+<br>
 <br>
 
 #{secure.check "physician"}

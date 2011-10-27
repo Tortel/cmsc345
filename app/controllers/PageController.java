@@ -122,6 +122,7 @@ public class PageController extends Controller {
     @Check("physician")
     public static void createExam(@Required(message = "Ultrasound Video is required") Blob video,
     		@Required Long patientId, String physicianComments, String patientComments){
+    	
     	if(validation.hasErrors()){
     		List<Patient> patients = Patient.findAll();
     		render("PageController/createExamForm.html", physicianComments, patientComments, patientId, patients);
@@ -134,7 +135,7 @@ public class PageController extends Controller {
     	//Create and save the exam
     	Exam exam = new Exam(patient, physician, physicianComments, patientComments, video);
     	exam.save();
-    	
+    	//Redirect them to the exam page, after its created
     	exam(exam.id);
     }
     
@@ -143,11 +144,23 @@ public class PageController extends Controller {
      * @param id
      */
     public static void downloadVideo(long id) {
-    	   Exam exam = Exam.findById(id);
-    	   notFoundIfNull(exam);
-    	   response.setContentTypeIfNotSet(exam.getVideo().type());
-    	   renderBinary(exam.getVideo().get(), exam.getVideoFileName());
+    	User user = User.findById( Security.getUserId() );
+    	Exam exam = Exam.findById(id);
+    	notFoundIfNull(exam);
+    	//If they are a physician, dont care
+    	if(user.getClass() == Physician.class){
+	    	response.setContentTypeIfNotSet(exam.getVideo().type());
+	    	renderBinary(exam.getVideo().get(), exam.getVideoFileName());
+    	} else {
+    		//They are the patient in the exam, allow them
+    		if(user.id == exam.getPatient().id){
+    	    	response.setContentTypeIfNotSet(exam.getVideo().type());
+    	    	renderBinary(exam.getVideo().get(), exam.getVideoFileName());
+    		} else {
+    			forbidden();
+    		}
     	}
+    }
     
 
 }
