@@ -116,7 +116,8 @@ public class PageController extends Controller {
     		@Required Long patientId, String physicianComments, String patientComments){
     	
     	if(validation.hasErrors()){
-    		render("PageController/createExamForm.html", physicianComments, patientComments, patientId);
+    		List<Patient> patients = Patient.findAll();
+    		render("PageController/createExamForm.html", physicianComments, patientComments, patientId, patients);
     	}
     	createExamForm();
     }
