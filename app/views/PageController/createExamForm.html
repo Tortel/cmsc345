@@ -20,7 +20,12 @@
 			<td>
 				<select name="patientId" id="patientId">
 	        	#{list items:patients, as:'patient'}
-	        		<option value="${patient.id}">${patient.getName()}</option>
+	        		#{if patientId != null && patientId == patient.id}
+	        			<option value="${patient.id}" selected>${patient.getName()}</option>
+	        		#{/if}
+	        		#{else}
+	        			<option value="${patient.id}">${patient.getName()}</option>
+	        		#{/else}
 	        	#{/list}
 	        	</select>
 			</td>
@@ -34,13 +39,13 @@
 		<tr>
 			<td>Physician Comments:</td>
 			<td>
-				<textarea rows="3" cols="40" name="physicianComments" id="physicianComments"></textarea>
+				<textarea rows="3" cols="40" name="physicianComments" id="physicianComments">${physicianComments}</textarea>
 			</td>
 		</tr>
 		<tr>
 			<td>Patient Comments:</td>
 			<td>
-				<textarea rows="3" cols="40" name="patientComments" id="patientComments"></textarea>
+				<textarea rows="3" cols="40" name="patientComments" id="patientComments">${patientComments}</textarea>
 			</td>
 		</tr>
 	<tr><td colspan="2" align="center">	<input type="submit" value="Create Account" />	</td></tr>

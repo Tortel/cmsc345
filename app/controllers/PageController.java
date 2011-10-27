@@ -4,6 +4,7 @@ import play.*;
 import play.data.validation.*;
 import play.mvc.*;
 
+import java.io.File;
 import java.util.*;
 
 import models.*;
@@ -111,8 +112,12 @@ public class PageController extends Controller {
     }
     
     @Check("physician")
-    public static void createExam(){
+    public static void createExam(@Required(message = "Ultrasound Video is required") File video,
+    		@Required Long patientId, String physicianComments, String patientComments){
     	
+    	if(validation.hasErrors()){
+    		render("PageController/createExamForm.html", physicianComments, patientComments, patientId);
+    	}
     	createExamForm();
     }
     
