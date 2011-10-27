@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 import play.data.validation.*;
+import play.db.jpa.Blob;
 import play.mvc.*;
 
 import java.io.File;
@@ -111,16 +112,42 @@ public class PageController extends Controller {
     	render(patients);
     }
     
+    /**
+     * Creates a new exam
+     * @param video the video file
+     * @param patientId the patient's ID
+     * @param physicianComments the physician's comments
+     * @param patientComments the patient's comments
+     */
     @Check("physician")
-    public static void createExam(@Required(message = "Ultrasound Video is required") File video,
+    public static void createExam(@Required(message = "Ultrasound Video is required") Blob video,
     		@Required Long patientId, String physicianComments, String patientComments){
-    	
     	if(validation.hasErrors()){
     		List<Patient> patients = Patient.findAll();
     		render("PageController/createExamForm.html", physicianComments, patientComments, patientId, patients);
     	}
-    	createExamForm();
+    	
+    	//Get the patient and physician based on ID
+    	Patient patient = Patient.findById(patientId);
+    	Physician physician = Physician.findById(Security.getUserId());
+    	
+    	//Create and save the exam
+    	Exam exam = new Exam(patient, physician, physicianComments, patientComments, video);
+    	exam.save();
+    	
+    	exam(exam.id);
     }
+    
+    /**
+     * Provides the video file to be downloaded
+     * @param id
+     */
+    public static void downloadVideo(long id) {
+    	   Exam exam = Exam.findById(id);
+    	   notFoundIfNull(exam);
+    	   response.setContentTypeIfNotSet(exam.getVideo().type());
+    	   renderBinary(exam.getVideo().get(), exam.getVideoFileName());
+    	}
     
 
 }

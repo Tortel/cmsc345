@@ -29,9 +29,12 @@ public class Exam extends Model {
 	
 	//Either a File object for the video file, or a Blob object. Not sure yet
 	private Blob video;
+	//Requires the file name to be saved too
+	private String videoFileName;
 	
 	/**
-	 * Creates a new Exam object
+	 * Creates a new Exam object.<br>
+	 * The date is the current date
 	 * @param patient the patient
 	 * @param physician the conducting physician
 	 * @param physisianComments the physician's comments
@@ -73,4 +76,9 @@ public class Exam extends Model {
 	public Blob getVideo(){
 		return video;
 	}
+	
+	public String getVideoFileName(){
+		return videoFileName;
+	}
+	
 }
