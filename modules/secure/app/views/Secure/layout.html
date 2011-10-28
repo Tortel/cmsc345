@@ -1,12 +1,73 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <title>Login</title>		
-        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/secure.css'}" />
-    </head>
-    <body>
-        #{doLayout /} 
-    </body>
+	Nonzero1.0 by nodethirtythree design
+	http://www.nodethirtythree.com
+	missing in a maze
+
+-->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<title>#{get 'title' /}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+<link rel="stylesheet" type="text/css" title="Blue" href="@{'/public/stylesheets/style_blue.css'}" />
+<link rel="alternate stylesheet" type="text/css" title="Green" href="@{'/public/stylesheets/style_green.css'}" />
+<link rel="alternate stylesheet" type="text/css" title="Red" href="@{'/public/stylesheets/style_red.css'}" />
+<link rel="alternate stylesheet" type="text/css" title="Magenta" href="@{'/public/stylesheets/style_magenta.css'}" />
+<script src="@{'/public/javascript/styleswitch.js'}" type="text/javascript">
+
+/***********************************************
+* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+
+</script>
+</head>
+<body>
+
+<div id="header">
+
+	<div id="header_inner" class="fixed">
+
+		<div id="logo">
+			<h1><span>Ultra</span></h1> <!-- --> 
+			<h2>&nbsp;</h2>
+		</div>
+		
+		<div id="menu">
+			<ul>
+				<li><a href="@{PageController.welcome()}">Login</a></li>
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+<div id="main">
+
+	<div id="main_inner" class="fixed">
+
+		<div id="primaryContent_columnless">
+		
+		<div id="columnA_columnless">
+		
+		
+        #{doLayout /}
+
+		</div>
+		
+		</div>
+	
+	</div>
+	
+<div id="footer" class="fixed">
+		Copyright &copy; 2011<br>
+		<font size="1">Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a></font>
+</div>
+	
+</body>
 </html>

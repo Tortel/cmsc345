@@ -77,6 +77,9 @@ public class PageController extends Controller {
      */
     public static void exam(Long examId){
     	Exam exam = Exam.findById(examId);
+    	//Display 404 if not found
+    	notFoundIfNull(exam);
+    	
     	render(exam);
     }
     
@@ -88,6 +91,9 @@ public class PageController extends Controller {
     @Check("physician")
     public static void patient(Long id){
     	Patient patient = Patient.findById(id);
+    	//404 if not found
+    	notFoundIfNull(patient);
+    	
     	render(patient);
     }
     
@@ -99,6 +105,9 @@ public class PageController extends Controller {
     @Check("physician")
     public static void physician(Long id){
     	Physician physician = Physician.findById(id);
+    	//404 if null
+    	notFoundIfNull(physician);
+    	
     	render(physician);
     }
     
