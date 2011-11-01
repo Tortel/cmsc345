@@ -1,10 +1,15 @@
 package controllers;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 import models.*;
 
+import play.libs.Mail;
 import play.mvc.Controller;
 
 import play.data.validation.Required;
+import repo.Repository;
 
 /**
  * Non-secured controller class.
@@ -72,4 +77,32 @@ public class Dummy extends Controller {
     	PageController.welcome();
 	}
 	
+	/**
+	 * Reders the forgot password page
+	 */
+	public static void forgotPassword(){
+		render();
+	}
+	
+	
+	public static void sendPassword(@Required(message = "A valid email address is required") String email){
+		User user = User.find("byEmail", email).first();
+		
+		if(validation.hasErrors() || user == null){
+			render("Dummy/forgotPassword.html");
+		}
+		
+		try {
+			//Will need to set up email prefs in the conf to be able to use
+			SimpleEmail toSend = new SimpleEmail();
+			toSend.setFrom("noreply@something.com");
+			toSend.addTo(email);
+			toSend.setSubject("Ultra Password");
+			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword(user.getPassword()) );
+			Mail.send(toSend);
+		} catch (EmailException e) {
+			e.printStackTrace(System.out);
+		} 
+		render(email);
+	}
 }
