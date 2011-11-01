@@ -71,12 +71,14 @@ public class PageController extends Controller {
     	
 		try {
 			Date startDate = DateFormat.getDateInstance().parse(start);
-			System.err.println("Start date: "+startDate);
+			System.out.println("Start date: "+startDate);
 			Date endDate = DateFormat.getDateInstance().parse(end);
-			System.err.println("End date: "+endDate);
+			System.out.println("End date: "+endDate);
 			exams = Repository.searchByDate(startDate, endDate);
+			render(exams);
+			return;
 		} catch (ParseException e) {
-			System.err.println("Error parsing dates");
+			System.out.println("Error parsing dates");
 			e.printStackTrace();
 			//Error trying date
 			exams = new ArrayList<Exam>(0);

@@ -98,14 +98,4 @@ public class Repository {
 		return encoded;
 	}
 	
-	//Might not need this
-	public static void makePhysician(){
-		
-	}
-	
-	//Might not need
-	public static void makePatient(){
-		
-	}
-	
 }
