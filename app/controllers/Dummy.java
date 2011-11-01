@@ -89,6 +89,8 @@ public class Dummy extends Controller {
 		User user = User.find("byUsername", email).first();
 		
 		if(validation.hasErrors() || user == null){
+			if(user == null)
+				validation.addError(email, "Email address is not registered", email);
 			render("Dummy/forgotPassword.html");
 		}
 		
@@ -96,7 +98,7 @@ public class Dummy extends Controller {
 			//Will need to set up email prefs in the conf to be able to use
 			SimpleEmail toSend = new SimpleEmail();
 			toSend.setFrom("noreply@something.com");
-			toSend.addTo(email);
+			toSend.addTo(email, user.getName());
 			toSend.setSubject("Ultra Password");
 			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword(user.getPassword()) );
 			Mail.send(toSend);
