@@ -86,7 +86,7 @@ public class Dummy extends Controller {
 	
 	
 	public static void sendPassword(@Required(message = "A valid email address is required") String email){
-		User user = User.find("byEmail", email).first();
+		User user = User.find("byUsername", email).first();
 		
 		if(validation.hasErrors() || user == null){
 			render("Dummy/forgotPassword.html");
