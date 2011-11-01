@@ -6,6 +6,9 @@ import play.db.jpa.Blob;
 import play.mvc.*;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import models.*;
@@ -43,7 +46,7 @@ public class PageController extends Controller {
      * @param start the start date, if searching by date range
      * @param end the end date, if searching by date range
      */
-    public static void results(Long physicianId, Long patientId, Date start, Date end){
+    public static void results(Long physicianId, Long patientId, String start, String end){
     	if(!Security.check("physician")){
     		physicianId = null;
     		start = null;
@@ -66,8 +69,16 @@ public class PageController extends Controller {
     		return;
     	}
     	
-    	exams = Repository.searchByDate(start, end);
-    	//Date
+		try {
+			Date startDate = DateFormat.getDateInstance().parse(start);
+			Date endDate = DateFormat.getDateInstance().parse(end);
+			exams = Repository.searchByDate(startDate, endDate);
+		} catch (ParseException e) {
+			//Error trying date
+			exams = new ArrayList<Exam>(0);
+		}
+		
+    	//Render something
     	render( exams );
     }
     
