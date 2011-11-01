@@ -18,7 +18,6 @@
 <link rel="alternate stylesheet" type="text/css" title="Red" href="@{'/public/stylesheets/style_red.css'}" />
 <link rel="alternate stylesheet" type="text/css" title="Magenta" href="@{'/public/stylesheets/style_magenta.css'}" />
 <script src="@{'/public/javascript/jquery-1.5.2.min.js'}" type="text/javascript">
-	$('#start,#end').datepick(); 
 </script>
 <script src="@{'/public/javascript/styleswitch.js'}" type="text/javascript">
 
@@ -63,6 +62,9 @@ function checkName(el, sbm) {
     alert('".'+ ar_name[1]+ '" is not an file type allowed for upload');
   }
 }
+</script>
+<script>
+$('#start,#end').datepick();
 </script>
 </head>
 <body>
