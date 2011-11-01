@@ -80,8 +80,8 @@ public class PageController extends Controller {
 			render(exams);
 			return;
 		} catch (ParseException e) {
-			System.out.println("Error parsing dates");
-			e.printStackTrace();
+			System.out.println("\n\nError parsing dates");
+			e.printStackTrace(System.out);
 			//Error trying date
 			exams = new ArrayList<Exam>(0);
 		}
