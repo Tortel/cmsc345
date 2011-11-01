@@ -33,8 +33,6 @@ public class Crypto {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-    	
     }
     
     
@@ -46,10 +44,11 @@ public class Crypto {
 			byte[] cipherText = new byte[cipher.getOutputSize(input.length)];
 			int ctLength = cipher.update(input, 0, input.length, cipherText, 0);
 			ctLength += cipher.doFinal(cipherText, ctLength);
+			System.out.println("Encrypted "+inputString+" to "+new String(cipherText));
 			return new String(cipherText);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			return inputString;
 		}
     	
@@ -64,10 +63,11 @@ public class Crypto {
 			byte[] plainText = new byte[cipher.getOutputSize(ctLength)];
 			int ptLength = cipher.update(cipherText, 0, ctLength, plainText, 0);
 			ptLength += cipher.doFinal(plainText, ptLength);
+			System.out.println("Decrypted "+inputString+" to "+new String(plainText));
 			return new String(plainText);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			return inputString;
 		}
     }

@@ -84,8 +84,8 @@ public class Repository {
 	 * @return the encoded string
 	 */
 	public static String encodePassword(String plaintext){
-		//TODO: Come up with some encoding process
-		return plaintext;
+		Crypto crypto = new Crypto();
+		return crypto.encrypt(plaintext);
 	}
 	
 	/**
@@ -94,8 +94,8 @@ public class Repository {
 	 * @return the decoded string
 	 */
 	public static String decodePassword(String encoded){
-		//TODO: Come up with the decoding process
-		return encoded;
+		Crypto crypto = new Crypto();
+		return crypto.decrypt(encoded);
 	}
 	
 }
