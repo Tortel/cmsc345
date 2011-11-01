@@ -3,6 +3,7 @@ package models;
 import javax.persistence.*;
 
 import play.db.jpa.*;
+import repo.Repository;
 
 /**
  * This class is an abstract class to represent users in the system.
@@ -11,7 +12,7 @@ import play.db.jpa.*;
 @Entity
 public abstract class User extends Model {
 	private String username;
-	private String password;
+	private byte[] password;
 	private String firstName;
 	private String lastName;
 	
@@ -22,7 +23,7 @@ public abstract class User extends Model {
 	 */
 	protected User(String username, String password, String firstName, String lastName){
 		this.username = username;
-		this.password = password;
+		this.password = Repository.encodePassword(password);
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -38,7 +39,7 @@ public abstract class User extends Model {
 		return username;
 	}
 	
-	public String getPassword(){
+	public byte[] getPassword(){
 		return password;
 	}
 	

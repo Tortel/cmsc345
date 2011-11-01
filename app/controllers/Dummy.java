@@ -60,9 +60,6 @@ public class Dummy extends Controller {
     		
     	}
     	
-    	//Encrypt the password
-    	password = Repository.encodePassword(password);
-    	
     	if (validation.hasErrors()) {
             render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
