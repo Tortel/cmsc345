@@ -70,9 +70,11 @@ public class PageController extends Controller {
     	}
     	
 		try {
-			Date startDate = DateFormat.getDateInstance().parse(start);
+			SimpleDateFormat formatter = new SimpleDateFormat("mm//dd//yyyy");
+			
+			Date startDate = formatter.parse(start);
 			System.out.println("Start date: "+startDate);
-			Date endDate = DateFormat.getDateInstance().parse(end);
+			Date endDate = formatter.parse(end);
 			System.out.println("End date: "+endDate);
 			exams = Repository.searchByDate(startDate, endDate);
 			render(exams);
