@@ -41,8 +41,8 @@ public class Repository {
 		
 		//Manually compare them all
 		for(Exam cur: exams){
-			if( (cur.getDate().after(first) || cur.getDate().equals(last))
-					&& (cur.getDate().before(last) || cur.getDate().equals(last)) )
+			if( cur.getDate().compareTo(first) >= 0
+					&& cur.getDate().compareTo(last) <= 0 )
 				toRet.add(cur);
 		}
 		
