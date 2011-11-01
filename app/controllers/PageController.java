@@ -70,7 +70,7 @@ public class PageController extends Controller {
     	}
     	
 		try {
-			SimpleDateFormat formatter = new SimpleDateFormat("MM//dd//yyyy");
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 			
 			Date startDate = formatter.parse(start);
 			System.out.println("Start date: "+startDate);
