@@ -31,5 +31,25 @@
 
 <br><br>
 
-<h3>Search by Date</h3>
-<p>Here later</p>
+
+#{form @PageController.results()}
+    <p>
+		<h3>Search by Date</h3>
+	    <table>
+	    <tr>
+			<td>Start Date: </td>
+			<td><input type="text" id="start" name="start" /></td>
+		</tr>
+		<tr>
+			<td>End Date:</td>
+			<td><input type="text" name="end" id="end" /></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+			  <input type="submit" value="Search" />
+			</td>
+		</tr>
+		</table>
+	</p>
+#{/form}
+			

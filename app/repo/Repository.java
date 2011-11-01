@@ -31,9 +31,12 @@ public class Repository {
 	 * @return a list of all the results
 	 */
 	public static List<Exam> searchByDate(Date first, Date last){
-		ArrayList<Exam> exams = new ArrayList<Exam>();
+		//Check for null
+		if( first == null || last == null){
+			return new ArrayList<Exam>(0);
+		}
 		
-		//TODO: Search for exams within the range
+		List<Exam> exams = (List<Exam>) Exam.find("byDate Between ? And ?", first, last);
 		
 		return exams;
 	}
