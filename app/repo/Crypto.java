@@ -31,7 +31,7 @@ public class Crypto {
 			cipher = Cipher.getInstance("AES/ECB/PKCS7Padding", "BC");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 		}
     }
     
