@@ -15,10 +15,10 @@ public class Bootstrap extends Job {
         if(User.count() == 0) {
         	//The really handy YML file doesnt handle inheritance well
             //Fixtures.loadModels("data.yml");
-        	Physician bob = new Physician("bob@gmail.com", "secret", "Bob", "Doctor").save();
-        	Physician george = new Physician("george@gmail.com", "secret", "George", "Test").save();
-        	Patient bill = new Patient("bill@gmail.com", "secret", "Bill", "Sick", "123 Main Street", "410-000-0000", 'M').save();
-        	Patient harriet = new Patient("harriet@gmail.com","secret", "Harriet", "Blarg", "124 Main Street", "410-000-0001", 'F').save();
+        	Physician bob = new Physician("bob@gmail.com", Repository.encodePassword("secret"), "Bob", "Doctor").save();
+        	Physician george = new Physician("george@gmail.com", Repository.encodePassword("secret"), "George", "Test").save();
+        	Patient bill = new Patient("bill@gmail.com", Repository.encodePassword("secret"), "Bill", "Sick", "123 Main Street", "410-000-0000", 'M').save();
+        	Patient harriet = new Patient("harriet@gmail.com",Repository.encodePassword("secret"), "Harriet", "Blarg", "124 Main Street", "410-000-0001", 'F').save();
         	
 			Exam exam1 = new Exam(bill, george, "Bill Sucks!", "Bob is awesome!", null).save();
         	Exam exam2 = new Exam(harriet, bob, "Harriet is awesome!", "Bob is awesome!", null).save();
