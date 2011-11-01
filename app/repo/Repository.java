@@ -46,7 +46,7 @@ public class Repository {
 				toRet.add(cur);
 		}
 		
-		return exams;
+		return toRet;
 	}
 	
 	/**
