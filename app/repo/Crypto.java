@@ -28,7 +28,7 @@ public class Crypto {
     	key = new SecretKeySpec(keyBytes, "AES");
     	
     	try {
-			cipher = Cipher.getInstance("AES/ECB/PKCS7Padding", "BC");
+			cipher = Cipher.getInstance("AES//ECB//PKCS7Padding", "BC");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace(System.out);
