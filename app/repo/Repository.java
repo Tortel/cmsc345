@@ -36,7 +36,15 @@ public class Repository {
 			return new ArrayList<Exam>(0);
 		}
 		
-		List<Exam> exams = (List<Exam>) Exam.find("byDate Between ? And ?", first, last);
+		List<Exam> exams = Exam.findAll();
+		List<Exam> toRet = new ArrayList<Exam>(exams.size());
+		
+		//Manually compare them all
+		for(Exam cur: exams){
+			if(cur.getDate().compareTo(first) >= 0
+					&& cur.getDate().compareTo(last) <= 0)
+				toRet.add(cur);
+		}
 		
 		return exams;
 	}
