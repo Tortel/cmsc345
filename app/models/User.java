@@ -12,7 +12,7 @@ import repo.Repository;
 @Entity
 public abstract class User extends Model {
 	private String username;
-	private byte[] password;
+	private String password;
 	private String firstName;
 	private String lastName;
 	
@@ -39,7 +39,7 @@ public abstract class User extends Model {
 		return username;
 	}
 	
-	public byte[] getPassword(){
+	public String getPassword(){
 		return password;
 	}
 	

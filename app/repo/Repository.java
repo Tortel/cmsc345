@@ -83,9 +83,8 @@ public class Repository {
 	 * @param plaintext the string to encode
 	 * @return the encoded string
 	 */
-	public static byte[] encodePassword(String plaintext){
-		Crypto crypto = new Crypto();
-		return crypto.encrypt(plaintext);
+	public static String encodePassword(String plaintext){
+		return plaintext;
 	}
 	
 	/**
@@ -93,9 +92,8 @@ public class Repository {
 	 * @param encoded the encoded string
 	 * @return the decoded string
 	 */
-	public static String decodePassword(byte[] encoded){
-		Crypto crypto = new Crypto();
-		return crypto.decrypt(encoded);
+	public static String decodePassword(String encoded){
+		return encoded;
 	}
 	
 }
