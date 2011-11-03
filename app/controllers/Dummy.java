@@ -81,7 +81,7 @@ public class Dummy extends Controller {
 	    }
 	    
 	    //Validate the address
-	    expression = "\\d+ \\s+ .*";
+	    expression = "\\d+ \\s+ \\.*";
 	    inputStr = address;  
 	    pattern = Pattern.compile(expression);  
 	    matcher = pattern.matcher(inputStr);  
