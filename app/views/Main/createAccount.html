@@ -1,0 +1,35 @@
+#{extends 'main.html' /}
+#{set title:'Create Account' /}
+
+<h3>Create Account</h3>
+#{ifErrors}
+	<br>
+	<b>Please fix the following errors:</b>
+	
+ 	#{errors}
+       <li>${error}</li>
+   	#{/errors}
+   	
+	<br>
+	<br>
+#{/ifErrors}
+#{form @Dummy.newAccount()}
+	<table>
+		<tr><td>Email Address:	</td><td><input type="text" size="25" name="email" id="email" value="${email}" /></td></tr>
+		<tr><td>Password: 		</td><td><input type="password" size="25" name="password" id="password" /></td></tr>
+		<tr><td>First Name:		</td><td><input type="text" size="25" name="firstName" id="firstName" value="${firstName}" /></td></tr>
+		<tr><td>Last Name: 		</td><td><input type="text" size="25" name="lastName" id="lastName" value="${lastName}" /></td></tr>
+		<tr><td>Address: 		</td><td><input type="text" size="25" name="address" id="address" value="${address}" /></td></tr>
+		<tr><td>Phone Number: 	</td><td><input type="text" size="25" name="phoneNumber" id="phoneNumber" value="${phoneNumber}" /></td></tr>
+		<tr><td>Sex:</td><td>
+			<select name="sex" id="sex">
+				<option value="f">Female</option>
+				<option value="m">Male</option>
+				<option value="i">Intersex</option>
+			</select>
+					</td></tr>
+		<tr><td>Physician Code (Optional):</td><td><input type="text" size="25" name="code" id="code" value="${code}" /></td></tr>
+	
+	<tr><td colspan="2" align="center">	<input type="submit" value="Create Account" />	</td></tr>
+	</table>
+#{/form}
