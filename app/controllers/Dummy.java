@@ -100,7 +100,7 @@ public class Dummy extends Controller {
 			toSend.setFrom("noreply@something.com");
 			toSend.addTo(email, user.getName());
 			toSend.setSubject("Ultra Password");
-			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword(user.getPassword()) );
+			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword( user.getPassword() ) );
 			Mail.send(toSend);
 		} catch (EmailException e) {
 			e.printStackTrace(System.out);
