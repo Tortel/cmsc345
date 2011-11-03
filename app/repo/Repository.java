@@ -2,6 +2,21 @@ package repo;
 
 import java.util.*;
 
+//Crypto shit
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+
+//For date search, to check if they are on the same day
+import org.apache.commons.lang.time.DateUtils;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
 import models.*;
 
 /**
@@ -41,8 +56,8 @@ public class Repository {
 		
 		//Manually compare them all
 		for(Exam cur: exams){
-			if( cur.getDate().compareTo(first) >= 0
-					&& cur.getDate().compareTo(last) <= 0 )
+			if( cur.getDate().after(first)
+					&& (cur.getDate().before(last) || DateUtils.isSameDay(cur.getDate(), last) )  )
 				toRet.add(cur);
 		}
 		
@@ -84,6 +99,25 @@ public class Repository {
 	 * @return the encoded string
 	 */
 	public static String encodePassword(String plaintext){
+		try {
+			// only the first 8 Bytes of the constructor argument are used 
+			// as material for generating the keySpec
+			DESKeySpec keySpec = new DESKeySpec("YourSecr".getBytes("UTF8")); 
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+			SecretKey key = keyFactory.generateSecret(keySpec);
+			BASE64Encoder base64encoder = new BASE64Encoder();
+			
+			// ENCODE plainTextPassword String
+			byte[] cleartext = plaintext.getBytes("UTF8");      
+			Cipher cipher = Cipher.getInstance("DES"); // cipher is not thread safe
+			cipher.init(Cipher.ENCRYPT_MODE, key);
+			plaintext = base64encoder.encode(cipher.doFinal(cleartext));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
 		return plaintext;
 	}
 	
@@ -93,6 +127,26 @@ public class Repository {
 	 * @return the decoded string
 	 */
 	public static String decodePassword(String encoded){
+		try {
+			// only the first 8 Bytes of the constructor argument are used 
+			// as material for generating the keySpec
+			DESKeySpec keySpec = new DESKeySpec("YourSecr".getBytes("UTF8")); 
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+			SecretKey key = keyFactory.generateSecret(keySpec);
+			BASE64Decoder base64decoder = new BASE64Decoder();
+			
+			// DECODE encryptedPwd String
+			byte[] encrypedPwdBytes = base64decoder.decodeBuffer(encoded);
+			Cipher cipher = Cipher.getInstance("DES");// cipher is not thread safe
+			cipher.init(Cipher.DECRYPT_MODE, key);
+			byte[] plainTextPwdBytes = (cipher.doFinal(encrypedPwdBytes));
+			encoded = plainTextPwdBytes.toString();
+		} catch (Exception e) {
+			System.out.println("Error decrypting");
+			// TODO Auto-generated catch block
+			e.printStackTrace(System.out);
+		} 
+		
 		return encoded;
 	}
 	
