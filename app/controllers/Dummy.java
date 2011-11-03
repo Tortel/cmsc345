@@ -80,6 +80,8 @@ public class Dummy extends Controller {
 	    	validation.addError("phoneNumber", "Enter a valid phone number", phoneNumber);
 	    }
 	    
+	    /*
+	     * Doesnt work currently, skipping
 	    //Validate the address
 	    expression = "\\d+ \\s+ \\.*";
 	    inputStr = address;  
@@ -87,7 +89,7 @@ public class Dummy extends Controller {
 	    matcher = pattern.matcher(inputStr);  
 	    if( !matcher.matches() ){
 	    	validation.addError("address", "Enter a valid address", address);
-	    }
+	    }*/
 	    
     	if (validation.hasErrors()) {
             render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
