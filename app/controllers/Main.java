@@ -17,7 +17,7 @@ import repo.Repository;
 /**
  * Non-secured controller class.
  */
-public class Dummy extends Controller {
+public class Main extends Controller {
 	
 	/**
 	 * Displays the main welcome page.
@@ -92,7 +92,7 @@ public class Dummy extends Controller {
 	    }*/
 	    
     	if (validation.hasErrors()) {
-            render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
+            render("Main/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
     	
     	//If the code is correct, create user as physician
@@ -122,7 +122,7 @@ public class Dummy extends Controller {
 		if(validation.hasErrors() || user == null){
 			if(user == null)
 				validation.addError(email, "Email address is not registered", email);
-			render("Dummy/forgotPassword.html");
+			render("Main/forgotPassword.html");
 		}
 		
 		try {

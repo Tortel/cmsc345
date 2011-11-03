@@ -31,7 +31,7 @@ public class Security extends Secure.Security {
 	 * Redirect the user to the 'landing' page on logout
 	 */
 	public static void onDisconnected(){
-		Dummy.index();
+		Main.index();
 	}
 	
 	/**

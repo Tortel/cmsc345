@@ -3,17 +3,17 @@
 # ~~~~
 
 # Home page
-GET     /                                       Dummy.index
+GET     /                                       Main.index
 GET		/main.html								PageController.welcome
 GET		/exam/{examId}							PageController.exam
 GET		/patinent/{id}							PageController.patient
 GET		/physician/{id}							PageController.physician
 GET		/search.html							PageController.search
 GET		/results.html							PageController.results
-GET		/createAccount.html						Dummy.createAccount
+GET		/createAccount.html						Main.createAccount
 GET		/createExam.html						PageController.createExamForm
-GET		/forgotPassword.html					Dummy.forgotPassword
-GET		/sent.html								Dummy.sendPassword
+GET		/forgotPassword.html					Main.forgotPassword
+GET		/sent.html								Main.sendPassword
 GET		/download/{id}							PageController.downloadVideo
 
 # Ignore favicon requests
