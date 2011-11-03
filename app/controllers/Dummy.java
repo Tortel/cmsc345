@@ -92,7 +92,7 @@ public class Dummy extends Controller {
 	    }*/
 	    
     	if (validation.hasErrors()) {
-            render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
+            render("createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
     	
     	//If the code is correct, create user as physician

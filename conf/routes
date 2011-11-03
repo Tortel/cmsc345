@@ -12,6 +12,8 @@ GET		/search.html							PageController.search
 GET		/results.html							PageController.results
 GET		/createAccount.html						Dummy.createAccount
 GET		/createExam.html						PageController.createExamForm
+GET		/forgotPassword.html					Dummy.forgotPassword
+GET		/sent.html								Dummy.sendPassword
 GET		/download/{id}							PageController.downloadVideo
 
 # Ignore favicon requests
