@@ -99,28 +99,6 @@ public class Repository {
 	 * @return the encoded string
 	 */
 	public static String encodePassword(String plaintext){
-		try {
-			// only the first 8 Bytes of the constructor argument are used 
-			// as material for generating the keySpec
-			DESKeySpec keySpec = new DESKeySpec("YourSecr".getBytes("UTF8")); 
-			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-			SecretKey key = keyFactory.generateSecret(keySpec);
-			BASE64Encoder base64encoder = new BASE64Encoder();
-			
-			// ENCODE plainTextPassword String
-			byte[] cleartext = plaintext.getBytes("UTF8");      
-			Cipher cipher = Cipher.getInstance("DES"); // cipher is not thread safe
-			cipher.init(Cipher.ENCRYPT_MODE, key);
-			System.out.print("Encrypting "+plaintext);
-			plaintext = base64encoder.encode(cipher.doFinal(cleartext));
-			System.out.print(" to "+plaintext+"\n");
-		} catch (Exception e) {
-			System.out.println("Error encrypting");
-			// TODO Auto-generated catch block
-			e.printStackTrace(System.out);
-		}
-
-
 		return plaintext;
 	}
 	
@@ -130,28 +108,6 @@ public class Repository {
 	 * @return the decoded string
 	 */
 	public static String decodePassword(String encoded){
-		try {
-			// only the first 8 Bytes of the constructor argument are used 
-			// as material for generating the keySpec
-			DESKeySpec keySpec = new DESKeySpec("YourSecr".getBytes("UTF8")); 
-			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-			SecretKey key = keyFactory.generateSecret(keySpec);
-			BASE64Decoder base64decoder = new BASE64Decoder();
-			
-			// DECODE encryptedPwd String
-			byte[] encrypedPwdBytes = base64decoder.decodeBuffer(encoded);
-			Cipher cipher = Cipher.getInstance("DES");// cipher is not thread safe
-			cipher.init(Cipher.DECRYPT_MODE, key);
-			byte[] plainTextPwdBytes = (cipher.doFinal(encrypedPwdBytes));
-			System.out.print("Decrypting "+encoded);
-			encoded = plainTextPwdBytes.toString();
-			System.out.print(" to "+encoded+"\n");
-		} catch (Exception e) {
-			System.out.println("Error decrypting");
-			// TODO Auto-generated catch block
-			e.printStackTrace(System.out);
-		} 
-		
 		return encoded;
 	}
 	

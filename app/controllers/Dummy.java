@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
@@ -57,9 +60,35 @@ public class Dummy extends Controller {
     	if(User.find("byUsername", email).fetch().size() > 0){
     		//Email already registered.
     		validation.addError("email", "Email already registered", "email");
-    		
     	}
     	
+    	//Validate email address
+	    String  expression="^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+	    CharSequence inputStr = email;
+	    Pattern pattern = Pattern.compile(expression,Pattern.CASE_INSENSITIVE);
+	    Matcher matcher = pattern.matcher(inputStr);
+	    if( !matcher.matches() ){
+		    validation.addError("email", "Enter a valid email address", email);
+	    }
+	    
+	    //Validate the phone number
+	    expression = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";  
+	    inputStr = phoneNumber;  
+	    pattern = Pattern.compile(expression);  
+	    matcher = pattern.matcher(inputStr);  
+	    if( !matcher.matches() ){
+	    	validation.addError("phoneNumber", "Enter a valid phone number", phoneNumber);
+	    }
+	    
+	    //Validate the address
+	    expression = "\\d+ \\s+ [a-zA-Z]+ | ([a-zA-Z]+ \\s+ [a-zA-Z]+) \\s+ [a-zA-Z]+.*";
+	    inputStr = address;  
+	    pattern = Pattern.compile(expression);  
+	    matcher = pattern.matcher(inputStr);  
+	    if( !matcher.matches() ){
+	    	validation.addError("address", "Enter a valid address", address);
+	    }
+	    
     	if (validation.hasErrors()) {
             render("Dummy/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
