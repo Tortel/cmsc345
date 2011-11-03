@@ -111,10 +111,13 @@ public class Repository {
 			byte[] cleartext = plaintext.getBytes("UTF8");      
 			Cipher cipher = Cipher.getInstance("DES"); // cipher is not thread safe
 			cipher.init(Cipher.ENCRYPT_MODE, key);
+			System.out.print("Encrypting "+plaintext);
 			plaintext = base64encoder.encode(cipher.doFinal(cleartext));
+			System.out.print(" to "+plaintext+"\n");
 		} catch (Exception e) {
+			System.out.println("Error encrypting");
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 		}
 
 
@@ -140,7 +143,9 @@ public class Repository {
 			Cipher cipher = Cipher.getInstance("DES");// cipher is not thread safe
 			cipher.init(Cipher.DECRYPT_MODE, key);
 			byte[] plainTextPwdBytes = (cipher.doFinal(encrypedPwdBytes));
+			System.out.print("Decrypting "+encoded);
 			encoded = plainTextPwdBytes.toString();
+			System.out.print(" to "+encoded+"\n");
 		} catch (Exception e) {
 			System.out.println("Error decrypting");
 			// TODO Auto-generated catch block
