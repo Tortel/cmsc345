@@ -91,6 +91,11 @@ public class Main extends Controller {
 	    	validation.addError("address", "Enter a valid address", address);
 	    }*/
 	    
+	    //Check if there is an entered code, and if its valid
+	    if(code != null && !code.equals("physician") ){
+	    	validation.addError("code", "Please enter a valid physician code, or leave it blank", code);
+	    }
+	    
     	if (validation.hasErrors()) {
             render("Main/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
