@@ -99,6 +99,7 @@ public class Repository {
 	 * @return the encoded string
 	 */
 	public static String encodePassword(String plaintext){
+		System.out.println(plaintext+" = "+ play.libs.Crypto.encryptAES(plaintext));
 		return play.libs.Crypto.encryptAES(plaintext);
 	}
 	
