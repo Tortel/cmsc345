@@ -3,9 +3,9 @@
 
 <h3>Exam ${exam.id}</h3>
 
-<p>Date: ${exam.getDate().format('dd MMM yy')}</p>
+<p><a href="@{PageController.printExam(exam.id)}" target="blank">Print Exam</a></p>
 
-<p><a href="@{PageController.printExam(exam.id)}" target="blank">Print</a></p>
+<p>Date: ${exam.getDate().format('dd MMM yy')}</p>
 
 #{if session.username && controllers.Secure.Security.invoke("check", "physician")}
 	<p>Physician: <a href="@{PageController.physician(exam.physician.id)}">${exam.physician.getName()}</a><br>
