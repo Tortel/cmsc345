@@ -190,5 +190,31 @@ public class PageController extends Controller {
     	}
     }
     
+    /**
+     * Displays a printable view for an exam
+     * @param id the exam ID
+     */
+    public static void printExam(Long id){
+    	Exam exam = Exam.findById(id);
+    	notFoundIfNull(exam);
+    	
+    	//Checks to prevent patients from printing someone else's exam
+    	User user = User.findById(Security.getUserId());
+    	if(user.getClass() == Physician.class){
+    		//Physician, dont really care
+    		render(exam);
+    	} else {
+    		//Patient, do care. Make sure they are the one on the exam
+    		if(user.id != exam.getPatient().id){
+    			forbidden();
+    		} else {
+    			render(exam);
+    		}
+    		
+    	}
+    	
+    	
+    }
+    
 
 }

@@ -5,6 +5,8 @@
 
 <p>Date: ${exam.getDate().format('dd MMM yy')}</p>
 
+<p><a href="@{PageController.printExam(exam.id)}" target="blank">Print</a></p>
+
 #{if session.username && controllers.Secure.Security.invoke("check", "physician")}
 	<p>Physician: <a href="@{PageController.physician(exam.physician.id)}">${exam.physician.getName()}</a><br>
 	Patient: <a href="@{PageController.patient(exam.patient.id)}">${exam.patient.getName()}</a></p>
