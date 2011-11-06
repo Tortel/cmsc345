@@ -99,7 +99,7 @@ public class Repository {
 	 * @return the encoded string
 	 */
 	public static String encodePassword(String plaintext){
-		return plaintext;
+		return play.libs.Crypto.encryptAES(plaintext);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class Repository {
 	 * @return the decoded string
 	 */
 	public static String decodePassword(String encoded){
-		return encoded;
+		return play.libs.Crypto.decryptAES(encoded);
 	}
 	
 }
