@@ -21,7 +21,8 @@ public class PageController extends Controller {
 	 * Displays the welcome page
 	 */
     public static void welcome() {
-        render();
+    	User user = User.findById(Security.getUserId());
+        render(user);
     }
     
     /**
