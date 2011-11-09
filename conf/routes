@@ -15,6 +15,7 @@ GET		/createExam.html						PageController.createExamForm
 GET		/forgotPassword.html					Main.forgotPassword
 GET		/sent.html								Main.sendPassword
 GET		/download/{id}							PageController.downloadVideo
+GET		/print/{id}								PageController.printExam
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
