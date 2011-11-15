@@ -100,7 +100,18 @@ public class PageController extends Controller {
     	//Display 404 if not found
     	notFoundIfNull(exam);
     	
-    	render(exam);
+    	//If they are a physician, dont care
+    	if(Security.check("physician")){
+	    	render(exam);
+    	} else {
+    		//A patient. Make sure its one of their exams
+    		if(Security.getUserId() != exam.getPatient().id){
+    			forbidden();
+    		}
+    		
+    		//Their exam, display it
+    		render(exam);
+    	}
     }
     
     /**
