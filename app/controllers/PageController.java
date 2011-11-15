@@ -209,7 +209,7 @@ public class PageController extends Controller {
     		//They are the patient in the exam, allow them
     		if(user.id == exam.getPatient().id){
     	    	response.setContentTypeIfNotSet(exam.getVideo().type());
-    	    	renderBinary(exam.getVideo().get(), exam.getVideoFileName());
+    	    	renderBinary(exam.getVideo().get(), exam.getVideoFileName()+ exam.getVideo().type());
     		} else {
     			forbidden();
     		}
