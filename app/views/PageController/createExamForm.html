@@ -19,6 +19,21 @@
 #{form @PageController.createExam(), enctype:'multipart/form-data'}
 	<table>
 		<tr>
+			<td>Physician:</td>
+			<td>
+				<select name="physicianId" id="physicianId">
+        		#{list items:physicians, as:'physician'}
+        			#{if physicianId != null && physician.id == id}
+        				<option value="${physician.id}" selected>${physician.getName()}</option>
+        			#{/if}
+        			#{else}
+        				<option value="${physician.id}">${physician.getName()}</option>
+        			#{/else}
+        		#{/list}
+        	</select>
+			</td>
+		</tr>
+		<tr>
 		<td>Patient:</td>
 			<td>
 				<select name="patientId" id="patientId">
@@ -32,6 +47,10 @@
 	        	#{/list}
 	        	</select>
 			</td>
+		</tr>
+	    <tr>
+			<td>Date: </td>
+			<td><input type="text" id="start" name="start" /></td>
 		</tr>
 		<tr>
 			<td>Ultrasound Video File:</td>

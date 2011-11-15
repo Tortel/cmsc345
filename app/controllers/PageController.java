@@ -149,31 +149,45 @@ public class PageController extends Controller {
     @Check("physician")
     public static void createExamForm(){
     	List<Patient> patients = Patient.findAll();
-    	render(patients);
+    	List<Physician> physicians = Physician.findAll();
+    	render(patients, physicians);
     }
     
     /**
      * Creates a new exam
      * @param video the video file
      * @param patientId the patient's ID
+     * @param physicianId the physician's id
+     * @param start the date of the exam (In MM/dd/yyyy format)
      * @param physicianComments the physician's comments
      * @param patientComments the patient's comments
      */
     @Check("physician")
     public static void createExam(@Required(message = "Ultrasound Video is required") Blob video,
-    		@Required Long patientId, String physicianComments, String patientComments){
+    		@Required Long patientId, @Required Long physicianId,
+    		@Required(message="Date is required") String start,
+    		String physicianComments, String patientComments){
+    	
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		Date date = null;
+		try{
+			date = formatter.parse(start);
+		} catch(Exception e){
+			validation.addError(start, "Invalid date", start);
+		}
     	
     	if(validation.hasErrors()){
     		List<Patient> patients = Patient.findAll();
-    		render("PageController/createExamForm.html", physicianComments, patientComments, patientId, patients);
+    		List<Physician> physicians = Physician.findAll();
+    		render("PageController/createExamForm.html", physicianId, physicianComments, physicians, patientComments, patientId, patients);
     	}
     	
     	//Get the patient and physician based on ID
     	Patient patient = Patient.findById(patientId);
-    	Physician physician = Physician.findById(Security.getUserId());
+    	Physician physician = Physician.findById(physicianId);
     	
     	//Create and save the exam
-    	Exam exam = new Exam(patient, physician, physicianComments, patientComments, video);
+    	Exam exam = new Exam(patient, physician, date, physicianComments, patientComments, video);
     	exam.save();
     	//Redirect them to the exam page, after its created
     	exam(exam.id);

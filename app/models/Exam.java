@@ -46,10 +46,16 @@ public class Exam extends Model {
 		this.physician = physician;
 		this.physician.addExam(this);
 		//TODO:Strip HTML from comments
+		//NOTE: might have been done already? idk
 		this.physicianComments = physicianComments;
 		this.patientComments = patientComments;
 		this.date = new Date();
 		this.video = video;
+	}
+	
+	public Exam(Patient patient, Physician physician, Date date, String physicianComments, String patientComments, Blob video){
+		this(patient, physician, physicianComments, patientComments, video);
+		this.date = date;
 	}
 	
 	
