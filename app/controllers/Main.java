@@ -92,7 +92,7 @@ public class Main extends Controller {
 	    }*/
 	    
 	    //Check if there is an entered code, and if its valid
-	    if(code != null && !code.equals("physician") ){
+	    if(!code.equals("") && !code.equals("physician") ){
 	    	validation.addError("code", "Please enter a valid physician code, or leave it blank", code);
 	    }
 	    
