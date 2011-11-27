@@ -5,10 +5,17 @@ import play.jobs.*;
 import play.test.*;
  
 import models.*;
- 
+
+/**
+ * Class to be run when the program
+ *
+ */
 @OnApplicationStart
 public class Bootstrap extends Job {
- 
+	
+	/**
+	 * Method to be run at start
+	 */
 	@SuppressWarnings("unused")
 	public void doJob() {
         // Check if the database is empty

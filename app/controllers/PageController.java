@@ -14,6 +14,10 @@ import java.util.*;
 import models.*;
 import repo.Repository;
 
+/**
+ * Controls all the secured pages
+ *
+ */
 @With(Secure.class)
 public class PageController extends Controller {
 	

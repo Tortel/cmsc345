@@ -120,7 +120,10 @@ public class Main extends Controller {
 		render();
 	}
 	
-	
+	/**
+	 * Emails a user their password
+	 * @param email
+	 */
 	public static void sendPassword(@Required(message = "A valid email address is required") String email){
 		User user = User.find("byUsername", email).first();
 		

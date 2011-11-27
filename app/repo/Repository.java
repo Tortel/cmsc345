@@ -38,7 +38,6 @@ public class Repository {
 			return false;
 	}
 	
-	
 	/**
 	 * Searches for exams within the given dates
 	 * @param first the beginning of the date range
@@ -90,8 +89,6 @@ public class Repository {
 		else
 			return new ArrayList<Exam>(0);
 	}
-	
-	
 	
 	/**
 	 * Encodes the given string
