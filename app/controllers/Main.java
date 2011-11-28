@@ -3,12 +3,8 @@ package controllers;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
-
 import models.*;
 
-import play.libs.Mail;
 import play.mvc.Controller;
 
 import play.data.validation.Required;
@@ -133,17 +129,9 @@ public class Main extends Controller {
 			render("Main/forgotPassword.html");
 		}
 		
-		try {
-			//Will need to set up email prefs in the conf to be able to use
-			SimpleEmail toSend = new SimpleEmail();
-			toSend.setFrom("noreply@something.com");
-			toSend.addTo(email, user.getName());
-			toSend.setSubject("Ultra Password");
-			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword( user.getPassword() ) );
-			Mail.send(toSend);
-		} catch (EmailException e) {
-			e.printStackTrace(System.out);
-		} 
+		//This sends the email
+		user.recoverPassword();
+		
 		render(email);
 	}
 }

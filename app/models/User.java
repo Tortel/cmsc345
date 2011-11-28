@@ -2,7 +2,11 @@ package models;
 
 import javax.persistence.*;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 import play.db.jpa.*;
+import play.libs.Mail;
 import repo.Repository;
 
 /**
@@ -32,7 +36,17 @@ public abstract class User extends Model {
 	 * Sends the user their password over email
 	 */
 	public void recoverPassword(){
-		//TODO: Implement this
+		try {
+			//Will need to set up email prefs in the conf to be able to use
+			SimpleEmail toSend = new SimpleEmail();
+			toSend.setFrom("noreply@something.com");
+			toSend.addTo(username, this.getName());
+			toSend.setSubject("Ultra Password");
+			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword( this.getPassword() ) );
+			Mail.send(toSend);
+		} catch (EmailException e) {
+			e.printStackTrace(System.out);
+		} 
 	}
 	
 	public String getUsername(){
