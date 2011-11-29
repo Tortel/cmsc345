@@ -1,12 +1,10 @@
 package controllers;
 
 import models.*;
-
 import repo.*;
 
 /**
- * Class to handle security-related items
- *
+ * Class to handle security-related items.
  */
 public class Security extends Secure.Security {
 
@@ -46,7 +44,7 @@ public class Security extends Secure.Security {
 		
 		//Check if user is a physician
 		if("physician".equals(profile)){
-			User user = User.find("byUsername", connected() ).<User>first();
+			User user = User.find("byUsername", connected()).<User>first();
 			if(user != null && user.getClass() == Physician.class)
 				return true;
 		}
@@ -59,7 +57,7 @@ public class Security extends Secure.Security {
 	 * @return the user ID
 	 */
 	public static long getUserId(){
-		User user = User.find("byUsername", connected() ).<User>first();
+		User user = User.find("byUsername", connected()).<User>first();
 		if(user != null){
 			return user.id;
 		}

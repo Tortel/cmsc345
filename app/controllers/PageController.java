@@ -4,19 +4,17 @@ import play.*;
 import play.data.validation.*;
 import play.db.jpa.Blob;
 import play.mvc.*;
-
-import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
 import models.*;
 import repo.Repository;
 
 /**
- * Controls all the secured pages
- *
+ * Controls all the secured pages.<br>
+ * This handles viewing and creating exams, viewing patient and physician details, and searching
+ * for exams.
  */
 @With(Secure.class)
 public class PageController extends Controller {
@@ -63,24 +61,23 @@ public class PageController extends Controller {
     	//Physician
     	if(physicianId != null){
     		exams = Repository.searchByPhysician(physicianId);
-    		render( exams );
+    		render(exams);
     		return;
     	}
     	
     	//Patient
     	if(patientId != null){
     		exams = Repository.searchByPatient(patientId);
-    		render( exams );
+    		render(exams);
     		return;
     	}
     	
 		try {
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-			
 			Date startDate = formatter.parse(start);
-			System.out.println("Start date: "+startDate);
+			System.out.println("Start date: " + startDate);
 			Date endDate = formatter.parse(end);
-			System.out.println("End date: "+endDate);
+			System.out.println("End date: " + endDate);
 			exams = Repository.searchByDate(startDate, endDate);
 			render(exams);
 			return;
@@ -104,7 +101,7 @@ public class PageController extends Controller {
     	//Display 404 if not found
     	notFoundIfNull(exam);
     	
-    	//If they are a physician, dont care
+    	//If they are a physician, don't care
     	if(Security.check("physician")){
 	    	render(exam);
     	} else {
@@ -168,9 +165,9 @@ public class PageController extends Controller {
      */
     @Check("physician")
     public static void createExam(@Required(message = "Ultrasound Video is required") Blob video,
-    		@Required Long patientId, @Required Long physicianId,
-    		@Required(message="Date is required") String start,
-    		String physicianComments, String patientComments){
+					    		  @Required Long patientId, @Required Long physicianId,
+					    		  @Required(message="Date is required") String start,
+					    		  String physicianComments, String patientComments){
     	
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = null;
@@ -183,7 +180,8 @@ public class PageController extends Controller {
     	if(validation.hasErrors()){
     		List<Patient> patients = Patient.findAll();
     		List<Physician> physicians = Physician.findAll();
-    		render("PageController/createExamForm.html", physicianId, physicianComments, physicians, patientComments, patientId, patients);
+    		render("PageController/createExamForm.html", physicianId, physicianComments, physicians, patientComments,
+    				patientId, patients);
     	}
     	
     	//Get the patient and physician based on ID
@@ -202,10 +200,10 @@ public class PageController extends Controller {
      * @param id
      */
     public static void downloadVideo(long id) {
-    	User user = User.findById( Security.getUserId() );
+    	User user = User.findById(Security.getUserId());
     	Exam exam = Exam.findById(id);
     	notFoundIfNull(exam);
-    	//If they are a physician, dont care
+    	//If they are a physician, don't care
     	if(user.getClass() == Physician.class){
 	    	response.setContentTypeIfNotSet(exam.getVideo().type());
 	    	renderBinary(exam.getVideo().get(), exam.getVideoFileName());
@@ -231,7 +229,7 @@ public class PageController extends Controller {
     	//Checks to prevent patients from printing someone else's exam
     	User user = User.findById(Security.getUserId());
     	if(user.getClass() == Physician.class){
-    		//Physician, dont really care
+    		//Physician, don't really care
     		render(exam);
     	} else {
     		//Patient, do care. Make sure they are the one on the exam

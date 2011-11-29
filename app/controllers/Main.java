@@ -2,16 +2,14 @@ package controllers;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import models.*;
-
 import play.mvc.Controller;
-
 import play.data.validation.Required;
 import repo.Repository;
 
 /**
- * Non-secured controller class.
+ * Non-secured controller class.<br>
+ * This handles the index, create account, and forgot password pages.
  */
 public class Main extends Controller {
 	
@@ -19,10 +17,11 @@ public class Main extends Controller {
 	 * Displays the main welcome page.
 	 */
 	public static void index(){
-		if(!Security.isConnected())
+		if(!Security.isConnected()){
 			render();
-		else
+		} else {
 			PageController.welcome();
+		}
 	}
 	
 	/**
@@ -44,15 +43,14 @@ public class Main extends Controller {
 	 * @param code code to create the account as a physician
 	 */
 	public static void newAccount(@Required(message = "Please enter a valid email address") String email,
-			@Required(message = "Please enter a password") String password,
-			@Required(message = "Please enter your first name") String firstName,
-			@Required(message = "Please enter your last name") String lastName,
-			@Required(message = "Please enter your address")  String address,
-			@Required(message = "Please enter your phone number") String phoneNumber,
-			@Required String sex,
-			String code){
+								  @Required(message = "Please enter a password") String password,
+								  @Required(message = "Please enter your first name") String firstName,
+								  @Required(message = "Please enter your last name") String lastName,
+								  @Required(message = "Please enter your address")  String address,
+								  @Required(message = "Please enter your phone number") String phoneNumber,
+								  @Required String sex, String code){
 		
-    	//Check that the email isnt registered already
+    	//Check that the email isn't registered already
     	if(User.find("byUsername", email).fetch().size() > 0){
     		//Email already registered.
     		validation.addError("email", "Email already registered", "email");
@@ -63,7 +61,7 @@ public class Main extends Controller {
 	    CharSequence inputStr = email;
 	    Pattern pattern = Pattern.compile(expression,Pattern.CASE_INSENSITIVE);
 	    Matcher matcher = pattern.matcher(inputStr);
-	    if( !matcher.matches() ){
+	    if(!matcher.matches()){
 		    validation.addError("email", "Enter a valid email address", email);
 	    }
 	    
@@ -76,23 +74,12 @@ public class Main extends Controller {
 	    	validation.addError("phoneNumber", "Enter a valid phone number", phoneNumber);
 	    }
 	    
-	    /*
-	     * Doesnt work currently, skipping
-	    //Validate the address
-	    expression = "\\d+ \\s+ \\.*";
-	    inputStr = address;  
-	    pattern = Pattern.compile(expression);  
-	    matcher = pattern.matcher(inputStr);  
-	    if( !matcher.matches() ){
-	    	validation.addError("address", "Enter a valid address", address);
-	    }*/
-	    
 	    //Check if there is an entered code, and if its valid
-	    if(!code.equals("") && !code.equals("physician") ){
+	    if(!code.equals("") && !code.equals("physician")){
 	    	validation.addError("code", "Please enter a valid physician code, or leave it blank", code);
 	    }
 	    
-    	if (validation.hasErrors()) {
+    	if (validation.hasErrors()){
             render("Main/createAccount.html", email, firstName, lastName, address, phoneNumber, code);
         }
     	
@@ -110,7 +97,7 @@ public class Main extends Controller {
 	}
 	
 	/**
-	 * Reders the forgot password page
+	 * Readers the forgot password page
 	 */
 	public static void forgotPassword(){
 		render();
@@ -124,8 +111,9 @@ public class Main extends Controller {
 		User user = User.find("byUsername", email).first();
 		
 		if(validation.hasErrors() || user == null){
-			if(user == null)
+			if(user == null){
 				validation.addError(email, "Email address is not registered", email);
+			}
 			render("Main/forgotPassword.html");
 		}
 		

@@ -1,22 +1,7 @@
 package repo;
 
 import java.util.*;
-
-//Crypto shit
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-
-//For date search, to check if they are on the same day
 import org.apache.commons.lang.time.DateUtils;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 import models.*;
 
 /**
@@ -32,14 +17,12 @@ public class Repository {
 	 */
 	public static boolean login(String username, String password){
 		User tmp = User.find("byUsernameAndPassword", username, encodePassword(password)).first();
-		if(tmp != null)
-			return true;
-		else
-			return false;
+		return (tmp != null);
 	}
 	
 	/**
-	 * Searches for exams within the given dates
+	 * Searches for exams within the given dates.<br>
+	 * If last is before first, they are swapped and the search is still run.
 	 * @param first the beginning of the date range
 	 * @param last the end of the test range
 	 * @return a list of all the results
@@ -50,14 +33,23 @@ public class Repository {
 			return new ArrayList<Exam>(0);
 		}
 		
+		//Make sure that last is either the same day or after the first date
+		if(!last.after(first) && DateUtils.isSameDay(first, last)){
+			//Swap them, so the search still works
+			Date temp = first;
+			first = last;
+			last = temp;
+		}
+		
 		List<Exam> exams = Exam.findAll();
 		List<Exam> toRet = new ArrayList<Exam>(exams.size());
 		
 		//Manually compare them all
 		for(Exam cur: exams){
 			if( cur.getDate().after(first)
-					&& (cur.getDate().before(last) || DateUtils.isSameDay(cur.getDate(), last) )  )
+					&& (cur.getDate().before(last) || DateUtils.isSameDay(cur.getDate(), last))){
 				toRet.add(cur);
+			}
 		}
 		
 		return toRet;
@@ -68,13 +60,13 @@ public class Repository {
 	 * @param patientId the patient's ID
 	 * @return a list of all their exams
 	 */
-	//Maybe search by name? Im thinking a dropdown for this
 	public static List<Exam> searchByPatient(Long patientId){
 		Patient patient = User.findById(patientId);
-		if(patient != null)
+		if(patient != null){
 			return patient.getExams();
-		else
+		} else {
 			return new ArrayList<Exam>(0);
+		}
 	}
 	
 	/**
@@ -84,10 +76,11 @@ public class Repository {
 	 */
 	public static List<Exam> searchByPhysician(Long physicianId){
 		Physician physician = Physician.findById(physicianId);
-		if(physician != null)
+		if(physician != null){
 			return physician.getExams();
-		else
+		} else {
 			return new ArrayList<Exam>(0);
+		}
 	}
 	
 	/**

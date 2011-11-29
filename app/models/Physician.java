@@ -1,14 +1,11 @@
 package models;
 
 import java.util.*;
-
 import javax.persistence.*;
-
 import play.db.jpa.*;
 
 /**
  * Represents a Physician in the system<br>
- * 
  */
 @Entity
 public class Physician extends User {
@@ -27,9 +24,8 @@ public class Physician extends User {
 	}
 	
 	/**
-	 * Returns all the exams this phyisician<br>
-	 * has conducted.
-	 * @return
+	 * Returns all the exams this physician has conducted.
+	 * @return the list of exams
 	 */
 	public List<Exam> getExams(){
 		return exams;

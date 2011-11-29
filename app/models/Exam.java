@@ -2,9 +2,7 @@ package models;
 
 import java.io.File;
 import java.util.Date;
-
 import javax.persistence.*;
-
 import play.db.jpa.*;
 
 /**
@@ -39,50 +37,85 @@ public class Exam extends Model {
 	 * @param physician the conducting physician
 	 * @param physisianComments the physician's comments
 	 * @param patientComments the patient's comments
+	 * @param video the ultrasound file
 	 */
 	public Exam(Patient patient, Physician physician, String physicianComments, String patientComments, Blob video){
 		this.patient = patient;
 		this.patient.addExam(this);
 		this.physician = physician;
 		this.physician.addExam(this);
-		//TODO:Strip HTML from comments
-		//NOTE: might have been done already? idk
 		this.physicianComments = physicianComments;
 		this.patientComments = patientComments;
 		this.date = new Date();
 		this.video = video;
 	}
 	
+	/**
+	 * Creates a new exam object.
+	 * @param patient the patient
+	 * @param physician the physician
+	 * @param date the date of the exam
+	 * @param physicianComments the physician's comments
+	 * @param patientComments the patient's comments
+	 * @param video the ultrasound file
+	 */
 	public Exam(Patient patient, Physician physician, Date date, String physicianComments, String patientComments, Blob video){
 		this(patient, physician, physicianComments, patientComments, video);
 		this.date = date;
 	}
 	
-	
+	/**
+	 * Get the patient
+	 * @return the patient
+	 */
 	public Patient getPatient(){
 		return patient;
 	}
 	
+	/**
+	 * Get the physician
+	 * @return the physician
+	 */
 	public Physician getPhysician(){
 		return physician;
 	}
 	
+	/**
+	 * Get the physician's comments
+	 * @return the physician's comments
+	 */
 	public String getPhysicianComments(){
 		return physicianComments;
 	}
 	
+	/**
+	 * Get the patient's comments
+	 * @return the patient's comments
+	 */
 	public String getPatientComments(){
 		return patientComments;
 	}
 	
+	/**
+	 * Get the date of the exam
+	 * @return the date
+	 */
 	public Date getDate(){
 		return date;
 	}
 	
+	/**
+	 * Get the ultrasound video
+	 * @return the video
+	 */
 	public Blob getVideo(){
 		return video;
 	}
 	
+	/**
+	 * Get the name of the ultrasound video file
+	 * @return the name of the video file
+	 */
 	public String getVideoFileName(){
 		return videoFileName;
 	}

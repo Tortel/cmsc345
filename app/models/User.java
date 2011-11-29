@@ -1,17 +1,14 @@
 package models;
 
 import javax.persistence.*;
-
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
-
 import play.db.jpa.*;
 import play.libs.Mail;
 import repo.Repository;
 
 /**
  * This class is an abstract class to represent users in the system.
- *
  */
 @Entity
 public abstract class User extends Model {
@@ -42,25 +39,41 @@ public abstract class User extends Model {
 			toSend.setFrom("noreply@something.com");
 			toSend.addTo(username, this.getName());
 			toSend.setSubject("Ultra Password");
-			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword( this.getPassword() ) );
+			toSend.setMsg("Your password to Ultra is: "+ Repository.decodePassword(this.getPassword()));
 			Mail.send(toSend);
 		} catch (EmailException e) {
 			e.printStackTrace(System.out);
 		} 
 	}
 	
+	/**
+	 * Get the username of the user
+	 * @return the username
+	 */
 	public String getUsername(){
 		return username;
 	}
 	
+	/**
+	 * Get the password of the user
+	 * @return the password
+	 */
 	public String getPassword(){
 		return password;
 	}
 	
+	/**
+	 * Get the first name of the user
+	 * @return the first name
+	 */
 	public String firstName(){
 		return firstName;
 	}
 	
+	/**
+	 * Get the last name of the user
+	 * @return the last name
+	 */
 	public String lastName(){
 		return lastName;
 	}
